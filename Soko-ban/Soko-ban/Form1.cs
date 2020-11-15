@@ -21,5 +21,10 @@ namespace Soko_ban
         {
             MessageBox.Show("Amiamo la russia");
         }
+
+        private void btnOpraio_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Sono un opraio");
+        }
     }
 }
