@@ -22,9 +22,6 @@ namespace Soko_ban
         void drawCampoGioco()
         {
             pnlCampoGioco.Controls.Clear();
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
             campoGioco = new int[11, 19]
             {
                 {0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//1
@@ -44,19 +41,23 @@ namespace Soko_ban
             {
                 for (int j = 0; j < 11; j++)
                 {
-                    if(campoGioco[j,i]==1)
+                    if (campoGioco[j, i] == 1)
                     {
-                        pnlCampoGioco.Size = new Size(19 * sizePacchi, 11 * sizePacchi);                        
+                        pnlCampoGioco.Size = new Size(19 * sizePacchi, 11 * sizePacchi);
                         PictureBox pbox = new PictureBox();
                         pbox.Image = new Bitmap(@"mattoni.jpg");
                         pbox.SizeMode = PictureBoxSizeMode.StretchImage;
                         pbox.Visible = true;
-                        pbox.Location = new Point(i * sizePacchi, j * sizePacchi);                        
-                        pbox.Size = new Size(sizePacchi, sizePacchi);                        
-                        pnlCampoGioco.Controls.Add(pbox);                        
+                        pbox.Location = new Point(i * sizePacchi, j * sizePacchi);
+                        pbox.Size = new Size(sizePacchi, sizePacchi);
+                        pnlCampoGioco.Controls.Add(pbox);
                     }
                 }
-            }            
+            }
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            drawCampoGioco();
         }
     }
 }
