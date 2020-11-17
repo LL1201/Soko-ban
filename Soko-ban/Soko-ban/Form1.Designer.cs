@@ -28,60 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSchiacciami = new System.Windows.Forms.Button();
-            this.btnOpraio = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.pnlCampoGioco = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // btnSchiacciami
+            // pnlCampoGioco
             // 
-            this.btnSchiacciami.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSchiacciami.Location = new System.Drawing.Point(281, 69);
-            this.btnSchiacciami.Name = "btnSchiacciami";
-            this.btnSchiacciami.Size = new System.Drawing.Size(209, 83);
-            this.btnSchiacciami.TabIndex = 0;
-            this.btnSchiacciami.Text = "Schiacciami";
-            this.btnSchiacciami.UseVisualStyleBackColor = true;
-            this.btnSchiacciami.Click += new System.EventHandler(this.btnSchiacciami_Click);
-            // 
-            // btnOpraio
-            // 
-            this.btnOpraio.Location = new System.Drawing.Point(415, 212);
-            this.btnOpraio.Name = "btnOpraio";
-            this.btnOpraio.Size = new System.Drawing.Size(75, 23);
-            this.btnOpraio.TabIndex = 2;
-            this.btnOpraio.Text = "sono opraio";
-            this.btnOpraio.UseVisualStyleBackColor = true;
-            this.btnOpraio.Click += new System.EventHandler(this.btnOpraio_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(281, 212);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "PUTIN";
-            this.button1.UseVisualStyleBackColor = true;
+            this.pnlCampoGioco.Location = new System.Drawing.Point(66, 38);
+            this.pnlCampoGioco.Name = "pnlCampoGioco";
+            this.pnlCampoGioco.Size = new System.Drawing.Size(737, 416);
+            this.pnlCampoGioco.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnOpraio);
-            this.Controls.Add(this.btnSchiacciami);
+            this.ClientSize = new System.Drawing.Size(1058, 609);
+            this.Controls.Add(this.pnlCampoGioco);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnSchiacciami;
-        private System.Windows.Forms.Button btnOpraio;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel pnlCampoGioco;
     }
 }
 
