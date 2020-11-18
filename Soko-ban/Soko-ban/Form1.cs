@@ -26,12 +26,12 @@ namespace Soko_ban
             {
                 {0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//1
                 {0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//2
-                {0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//3
-                {0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},//4
-                {0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},//5
+                {0, 0, 0, 0, 1, 2, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//3
+                {0, 0, 1, 1, 1, 0, 0, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},//4
+                {0, 0, 1, 0, 0, 2, 0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},//5
                 {1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1},//6
                 {1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1},//7
-                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},//8
+                {1, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},//8
                 {1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1},//9
                 {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},//10
                 {0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},//11
@@ -46,6 +46,17 @@ namespace Soko_ban
                         pnlCampoGioco.Size = new Size(19 * sizePacchi, 11 * sizePacchi);
                         PictureBox pbox = new PictureBox();
                         pbox.Image = new Bitmap(@"mattoni.jpg");
+                        pbox.SizeMode = PictureBoxSizeMode.StretchImage;
+                        pbox.Visible = true;
+                        pbox.Location = new Point(i * sizePacchi, j * sizePacchi);
+                        pbox.Size = new Size(sizePacchi, sizePacchi);
+                        pnlCampoGioco.Controls.Add(pbox);
+                    }
+                    else if(campoGioco[j, i]== 2)
+                    {
+                        pnlCampoGioco.Size = new Size(19 * sizePacchi, 11 * sizePacchi);
+                        PictureBox pbox = new PictureBox();
+                        pbox.Image = new Bitmap(@"cassa.jpg");
                         pbox.SizeMode = PictureBoxSizeMode.StretchImage;
                         pbox.Visible = true;
                         pbox.Location = new Point(i * sizePacchi, j * sizePacchi);
