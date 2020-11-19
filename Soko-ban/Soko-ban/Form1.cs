@@ -24,6 +24,7 @@ namespace Soko_ban
 
         void drawCampoGioco()
         {
+            DrawingControl.SuspendDrawing(pnlCampoGioco);
             pnlCampoGioco.Controls.Clear();
             for ( i = 0; i < 19; i++)
             {
@@ -44,6 +45,7 @@ namespace Soko_ban
                        
                 }
             }
+            DrawingControl.ResumeDrawing(pnlCampoGioco);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -81,13 +83,40 @@ namespace Soko_ban
             switch(e.KeyCode)
             {
                 case Keys.Left:
-                    //if (campoGioco[m.position.X , m.position.Y] != 1)
-                    //{ 
+                    if (campoGioco[m.position.X , m.position.Y-1] != 1)
+                    { 
                         campoGioco[m.position.X, m.position.Y] = 0;
                         campoGioco[m.position.X, m.position.Y - 1] = 3;
                         drawCampoGioco();
-                    //}
-
+                        m.position.Y--;
+                    }
+                    break;
+                case Keys.Right:
+                    if (campoGioco[m.position.X, m.position.Y+1] != 1)
+                    {
+                        campoGioco[m.position.X, m.position.Y] = 0;
+                        campoGioco[m.position.X, m.position.Y + 1] = 3;
+                        drawCampoGioco();
+                        m.position.Y++;
+                    }
+                    break;
+                case Keys.Up:
+                    if (campoGioco[m.position.X-1, m.position.Y] != 1)
+                    {
+                        campoGioco[m.position.X, m.position.Y] = 0;
+                        campoGioco[m.position.X-1, m.position.Y] = 3;
+                        drawCampoGioco();
+                        m.position.X--;
+                    }
+                    break;
+                case Keys.Down:
+                    if (campoGioco[m.position.X + 1, m.position.Y] != 1)
+                    {
+                        campoGioco[m.position.X, m.position.Y] = 0;
+                        campoGioco[m.position.X + 1, m.position.Y] = 3;
+                        drawCampoGioco();
+                        m.position.X++;
+                    }
                     break;
             }
        }
