@@ -33,20 +33,19 @@
             // 
             // pnlCampoGioco
             // 
-            this.pnlCampoGioco.Location = new System.Drawing.Point(88, 47);
-            this.pnlCampoGioco.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlCampoGioco.Location = new System.Drawing.Point(66, 38);
             this.pnlCampoGioco.Name = "pnlCampoGioco";
-            this.pnlCampoGioco.Size = new System.Drawing.Size(983, 512);
+            this.pnlCampoGioco.Size = new System.Drawing.Size(737, 416);
             this.pnlCampoGioco.TabIndex = 0;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1411, 750);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1058, 609);
             this.Controls.Add(this.pnlCampoGioco);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

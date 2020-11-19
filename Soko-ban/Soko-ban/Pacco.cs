@@ -6,10 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Soko_ban
-{
-   
+{  
     class Pacco
     {
-        public int dimensione = 32;
+        public Point position;        
+        public Pacco(int x, int y)
+        {
+            position.X = x;
+            position.Y = y;           
+        }
     }
 }
