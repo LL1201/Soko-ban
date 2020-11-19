@@ -10,6 +10,6 @@ namespace Soko_ban
    
     class Pacco
     {
-       
+        public int dimensione = 32;
     }
 }
