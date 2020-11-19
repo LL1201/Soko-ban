@@ -75,7 +75,8 @@ namespace Soko_ban
                         m = new Magazziniere();                    
                 }
             }
-            drawCampoGioco();            
+            drawCampoGioco();           
+            
         }
 
         void generaElementi(string percorso, int i, int j)
