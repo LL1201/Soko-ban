@@ -32,21 +32,15 @@ namespace Soko_ban
             {
                 for ( int j = 0; j < campoGioco.GetLength(0); j++)
                 {
-                    if (campoGioco[j, i] == 1)
-                    {
-                        generaElementi("..\\..\\images\\mattoni.jpg", i, j);
-                    }
-                    else if(campoGioco[j, i]== 2)
-                    {
-                        generaElementi("..\\..\\images\\cassa.jpg", i, j);
-                    }
-                    else if(campoGioco[j,i]==3)
-                    {
+                    if (campoGioco[j, i] == 1)                    
+                        generaElementi("..\\..\\images\\mattoni.jpg", i, j);                    
+                    else if(campoGioco[j, i]== 2)                    
+                        generaElementi("..\\..\\images\\cassa.jpg", i, j);                    
+                    else if(campoGioco[j,i]==3)                    
                         generaElementi("..\\..\\images\\magazziniere.jpg", i, j);
-                    }
-                       
                 }
             }
+            lblLivello.Text = Convert.ToString(1);
             DrawingControl.ResumeDrawing(pnlCampoGioco);
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -77,18 +71,16 @@ namespace Soko_ban
                         vetpacchi[pospacchi] = new Pacco(j, i);
                         pospacchi++;
                     }
-                    else if (campoGioco[j, i] == 3)
-                    {
-                        m = new Magazziniere();
-                    }
+                    else if (campoGioco[j, i] == 3)                    
+                        m = new Magazziniere();                    
                 }
             }
             drawCampoGioco();            
         }
 
-       void generaElementi(string percorso, int i, int j)
-       {
-            pnlCampoGioco.Size = new Size(campoGioco.GetLength(1) * sizePacchi, campoGioco.GetLength(0) * sizePacchi);
+        void generaElementi(string percorso, int i, int j)
+        {
+            pnlCampoGioco.Size = new Size(campoGioco.GetLength(1) * sizePacchi, (campoGioco.GetLength(0) * sizePacchi)+48);
             PictureBox pbox = new PictureBox();
             pbox.Image = new Bitmap(percorso);
             pbox.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -96,10 +88,10 @@ namespace Soko_ban
             pbox.Location = new Point(i * sizePacchi, j * sizePacchi);
             pbox.Size = new Size(sizePacchi, sizePacchi);
             pnlCampoGioco.Controls.Add(pbox);
-       }
+        }
         
-       private void Form1_KeyDown(object sender, KeyEventArgs e)
-       {
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
             switch(e.KeyCode)
             {
                 case Keys.Left:
@@ -211,8 +203,12 @@ namespace Soko_ban
                     }
                     break;
             }
-       }
+        }
 
+        public void KeyFunction(int x, int y, int dir) //funzione che andrà a sostituire le operazioni di ogni singolo tasto
+        {            
+        }
+            
         class DrawingControl
         {
             [DllImport("user32.dll")]
@@ -231,6 +227,7 @@ namespace Soko_ban
                 parent.Refresh();
             }
         }
+        
     }
 }
 
