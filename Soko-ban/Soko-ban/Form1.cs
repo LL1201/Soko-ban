@@ -83,8 +83,7 @@ namespace Soko_ban
                     //if (campoGioco[m.position.X , m.position.Y] != 1)
                     //{ 
                         campoGioco[m.position.X, m.position.Y] = 0;
-                        campoGioco[m.position.X - 1, m.position.Y] = 3;
-                        MessageBox.Show(Convert.ToString(m.position.X));
+                        campoGioco[m.position.X, m.position.Y - 1] = 3;
                         drawCampoGioco();
                     //}
 
