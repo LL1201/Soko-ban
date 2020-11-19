@@ -207,7 +207,7 @@ namespace Soko_ban
         }
 
         public void KeyFunction(int x, int y, int dir) //funzione che andrà a sostituire le operazioni di ogni singolo tasto
-        {            
+        {                    
         }
             
         class DrawingControl
