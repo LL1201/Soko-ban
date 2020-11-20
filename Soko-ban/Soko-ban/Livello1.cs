@@ -206,8 +206,41 @@ namespace Soko_ban
         }
 
 
-        public void KeyFunction(int x, int y, int dir) //funzione che andrà a sostituire le operazioni di ogni singolo tasto
+        public void KeyFunction(ref int mx, ref int my, int x, int y, int dir) //funzione che andrà a sostituire le operazioni di ogni singolo tasto
         {
+            if (campoGioco[mx + x, my + y] == 0)
+            {
+                campoGioco[mx, my] = 0;
+                campoGioco[mx + x, my + y] = 3;
+                drawCampoGioco();
+                my++;
+            }
+            else if (campoGioco[mx, my + y] == 2)
+            {
+                if (campoGioco[mx + (x * 2), my + (y * 2)] == 0)
+                {
+                    campoGioco[mx, my] = 0;
+                    campoGioco[mx + x, my + y] = 3;
+                    for (int i = 0; i < vetpacchi.GetLength(0); i++)
+                    {
+                        if (dir == 1)
+                            if (vetpacchi[i].position.X == mx && vetpacchi[i].position.Y == my + y)
+                            {
+                                campoGioco[vetpacchi[i].position.X, vetpacchi[i].position.Y + y] = 2;
+                                vetpacchi[i].position.Y += y;
+                                my += y;
+                            }
+                            else
+                            if (vetpacchi[i].position.Y == my && vetpacchi[i].position.X == mx + x)
+                            {
+                                campoGioco[vetpacchi[i].position.X, vetpacchi[i].position.Y + 1] = 2;
+                                vetpacchi[i].position.X += x;
+                                mx += x;
+                            }
+                    }
+                    drawCampoGioco();
+                }
+            }
         }
             
         class DrawingControl
