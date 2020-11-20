@@ -181,7 +181,7 @@ namespace Soko_ban
                         campoGioco[m.position.X, m.position.Y] = 0;
                         campoGioco[m.position.X + 1, m.position.Y] = 3;
                         drawCampoGioco();
-                        m.position.X++;
+                        m.position.X--;
                     }
                     else if (campoGioco[m.position.X + 1, m.position.Y] == 2)
                     {
@@ -191,7 +191,7 @@ namespace Soko_ban
                             campoGioco[m.position.X + 1, m.position.Y] = 3;
                             for (int i = 0; i < vetpacchi.GetLength(0); i++)
                             {
-                                if (vetpacchi[i].position.Y == m.position.Y && vetpacchi[i].position.X == m.position.X + 1)
+                                if (vetpacchi[i].position.Y == m.position.Y && vetpacchi[i].position.X == m.position.X +1)
                                 {
                                     campoGioco[vetpacchi[i].position.X + 1, vetpacchi[i].position.Y] = 2;
                                     vetpacchi[i].position.X++;
@@ -205,8 +205,9 @@ namespace Soko_ban
             }
         }
 
+
         public void KeyFunction(int x, int y, int dir) //funzione che andrà a sostituire le operazioni di ogni singolo tasto
-        {                    
+        {
         }
             
         class DrawingControl
