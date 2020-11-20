@@ -94,7 +94,7 @@ namespace Soko_ban
         {
             switch(e.KeyCode)
             {
-                case Keys.Left:
+                case Keys.Left:                    
                     if (campoGioco[m.position.X , m.position.Y-1] == 0)
                     { 
                         campoGioco[m.position.X, m.position.Y] = 0;
