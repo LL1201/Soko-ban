@@ -30,8 +30,8 @@
         {
             this.pnlCampoGioco = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblLivello = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +51,16 @@
             this.panel1.Size = new System.Drawing.Size(731, 47);
             this.panel1.TabIndex = 0;
             // 
+            // lblLivello
+            // 
+            this.lblLivello.AutoSize = true;
+            this.lblLivello.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLivello.Location = new System.Drawing.Point(83, 12);
+            this.lblLivello.Name = "lblLivello";
+            this.lblLivello.Size = new System.Drawing.Size(25, 29);
+            this.lblLivello.TabIndex = 1;
+            this.lblLivello.Text = "..";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -61,17 +71,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Livello:";
             // 
-            // lblLivello
-            // 
-            this.lblLivello.AutoSize = true;
-            this.lblLivello.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLivello.Location = new System.Drawing.Point(83, 12);
-            this.lblLivello.Name = "lblLivello";
-            this.lblLivello.Size = new System.Drawing.Size(19, 29);
-            this.lblLivello.TabIndex = 1;
-            this.lblLivello.Text = ".";
-            // 
-            // Form1
+            // Livello1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -81,7 +81,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlCampoGioco);
             this.KeyPreview = true;
-            this.Name = "Form1";
+            this.Name = "Livello1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Livello1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
