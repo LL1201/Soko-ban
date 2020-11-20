@@ -30,8 +30,9 @@
         {
             this.pnlCampoGioco = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblLivello = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblPunteggi = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,12 +45,24 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblPunteggi);
             this.panel1.Controls.Add(this.lblLivello);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 546);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 558);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(731, 47);
+            this.panel1.Size = new System.Drawing.Size(793, 47);
             this.panel1.TabIndex = 0;
+            // 
+            // lblLivello
+            // 
+            this.lblLivello.AutoSize = true;
+            this.lblLivello.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLivello.Location = new System.Drawing.Point(83, 12);
+            this.lblLivello.Name = "lblLivello";
+            this.lblLivello.Size = new System.Drawing.Size(19, 29);
+            this.lblLivello.TabIndex = 1;
+            this.lblLivello.Text = ".";
             // 
             // label1
             // 
@@ -61,15 +74,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Livello:";
             // 
-            // lblLivello
+            // lblPunteggi
             // 
-            this.lblLivello.AutoSize = true;
-            this.lblLivello.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLivello.Location = new System.Drawing.Point(83, 12);
-            this.lblLivello.Name = "lblLivello";
-            this.lblLivello.Size = new System.Drawing.Size(19, 29);
-            this.lblLivello.TabIndex = 1;
-            this.lblLivello.Text = ".";
+            this.lblPunteggi.AutoSize = true;
+            this.lblPunteggi.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPunteggi.Location = new System.Drawing.Point(176, 12);
+            this.lblPunteggi.Name = "lblPunteggi";
+            this.lblPunteggi.Size = new System.Drawing.Size(139, 29);
+            this.lblPunteggi.TabIndex = 2;
+            this.lblPunteggi.Text = "Punteggio:";
             // 
             // Form1
             // 
@@ -97,6 +110,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblLivello;
+        private System.Windows.Forms.Label lblPunteggi;
     }
 }
 
