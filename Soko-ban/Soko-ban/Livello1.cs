@@ -104,7 +104,7 @@ namespace Soko_ban
                     }
                     else if (campoGioco[m.position.X, m.position.Y - 1] == 2)
                     {
-                        if(campoGioco[m.position.X, m.position.Y - 2] != 2 && campoGioco[m.position.X, m.position.Y - 2] != 1)
+                        if(campoGioco[m.position.X, m.position.Y - 2] == 0)
                         {
                             campoGioco[m.position.X, m.position.Y] = 0;
                             campoGioco[m.position.X, m.position.Y - 1] = 3;
@@ -131,7 +131,7 @@ namespace Soko_ban
                     }
                     else if (campoGioco[m.position.X, m.position.Y + 1] == 2)
                     {
-                        if (campoGioco[m.position.X, m.position.Y + 2] != 2 && campoGioco[m.position.X, m.position.Y + 2] != 1)
+                        if (campoGioco[m.position.X, m.position.Y + 2] == 0)
                         {
                             campoGioco[m.position.X, m.position.Y] = 0;
                             campoGioco[m.position.X, m.position.Y + 1] = 3;
@@ -158,7 +158,7 @@ namespace Soko_ban
                     }
                     else if (campoGioco[m.position.X-1, m.position.Y] == 2)
                     {
-                        if (campoGioco[m.position.X-2, m.position.Y] != 2 && campoGioco[m.position.X-2, m.position.Y] != 1)
+                        if (campoGioco[m.position.X - 2, m.position.Y] == 0)
                         {
                             campoGioco[m.position.X, m.position.Y] = 0;
                             campoGioco[m.position.X-1, m.position.Y] = 3;
@@ -185,7 +185,7 @@ namespace Soko_ban
                     }
                     else if (campoGioco[m.position.X + 1, m.position.Y] == 2)
                     {
-                        if (campoGioco[m.position.X + 2, m.position.Y] != 2 && campoGioco[m.position.X + 2, m.position.Y] != 1)
+                        if (campoGioco[m.position.X + 2, m.position.Y] == 0)
                         {
                             campoGioco[m.position.X, m.position.Y] = 0;
                             campoGioco[m.position.X + 1, m.position.Y] = 3;
