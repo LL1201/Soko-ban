@@ -12,14 +12,14 @@ using System.Runtime.InteropServices;
 
 namespace Soko_ban
 {
-    public partial class Form1 : Form
+    public partial class Livello1 : Form
     {
         public int sizePacchi = 48;
         private int[,] campoGioco;
         private Pacco[] vetpacchi;
         private Magazziniere m;    
         
-        public Form1()
+        public Livello1()
         {
             InitializeComponent();
         }
@@ -43,7 +43,7 @@ namespace Soko_ban
             lblLivello.Text = Convert.ToString(1);
             DrawingControl.ResumeDrawing(pnlCampoGioco);
         }
-        private void Form1_Load(object sender, EventArgs e)
+        private void Livello1_Load(object sender, EventArgs e)
         {
             int pospacchi = 0;
             vetpacchi = new Pacco[6];
