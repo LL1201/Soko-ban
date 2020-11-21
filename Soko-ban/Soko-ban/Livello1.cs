@@ -96,15 +96,19 @@ namespace Soko_ban
             {
                 case Keys.Left:
                     KeyFunction(m.Posx, m.Posy, 0, -1, 1);
+                    drawCampoGioco();
                     break;
                 case Keys.Right:
                     KeyFunction(m.Posx, m.Posy, 0, 1, 1);
+                    drawCampoGioco();
                     break;
                 case Keys.Up:
                     KeyFunction(m.Posx, m.Posy, -1, 0, 0);
+                    drawCampoGioco();
                     break;
                 case Keys.Down:
                     KeyFunction(m.Posx, m.Posy, 1, 0, 0);
+                    drawCampoGioco();
                     break;
             }
         }
@@ -128,24 +132,19 @@ namespace Soko_ban
                 {
                     campoGioco[mx, my] = 0;
                     campoGioco[mx + x, my + y] = 3;
-                    for (int i = 0; i < vetpacchi.GetLength(0); i++)
+                    campoGioco[mx + (x * 2), my + (y * 2)] = 2;
+                    m.Posy += y;
+                    m.Posx += x;
+
+                    for(int i = 0; i < vetpacchi.GetLength(0); i++)
                     {
-                        if (dir == 1) //dir 1 movimento orrizzontale
-                            if (vetpacchi[i].position.X == mx + x && vetpacchi[i].position.Y == my + y)
+                        if(dir==0)
+                            if(vetpacchi[i].position.X == mx + x && vetpacchi[i].position.Y == my + y)
                             {
-                                campoGioco[vetpacchi[i].position.X + x, vetpacchi[i].position.Y + y] = 2;
                                 vetpacchi[i].position.Y += y;
-                                m.Posy += y;
+                                vetpacchi[i].position.X += x;                               
                             }
-                        else
-                            if (vetpacchi[i].position.X == mx + x && vetpacchi[i].position.Y == my + y)
-                            {
-                                campoGioco[vetpacchi[i].position.X + x, vetpacchi[i].position.Y + y] = 2;
-                                vetpacchi[i].position.X += x;
-                                m.Posx += x;
-                            }
-                    }
-                    drawCampoGioco();
+                    }                                    
                 }
             }
         }
