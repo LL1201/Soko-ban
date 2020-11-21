@@ -9,7 +9,7 @@ namespace Soko_ban
 {
     class Magazziniere
     {
-        public Point position;
+        private Point position;
         
         public Magazziniere(int x, int y)
         {

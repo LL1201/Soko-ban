@@ -95,36 +95,40 @@ namespace Soko_ban
             switch(e.KeyCode)
             {
                 case Keys.Left:
-                    KeyFunction(m.Posx, m.Posy, 0, -1, 1);
+                    KeyFunction(m.Posx, m.Posy, 0, -1);
                     drawCampoGioco();
                     break;
                 case Keys.Right:
-                    KeyFunction(m.Posx, m.Posy, 0, 1, 1);
+                    KeyFunction(m.Posx, m.Posy, 0, 1);
                     drawCampoGioco();
                     break;
                 case Keys.Up:
-                    KeyFunction(m.Posx, m.Posy, -1, 0, 0);
+                    KeyFunction(m.Posx, m.Posy, -1, 0);
                     drawCampoGioco();
                     break;
                 case Keys.Down:
-                    KeyFunction(m.Posx, m.Posy, 1, 0, 0);
+                    KeyFunction(m.Posx, m.Posy, 1, 0);                   
                     drawCampoGioco();
                     break;
             }
         }
 
-        public void KeyFunction(int mx, int my, int x, int y, int dir) //funzione che andrà a sostituire le operazioni di ogni singolo tasto
+        /// <summary>
+        /// A seconda del tasto premuto muove l'omino in giro per il labirinto
+        /// </summary>
+        /// <param name="mx">Posizione x dell'omino</param>
+        /// <param name="my">Posizione y dell'omino</param>
+        /// <param name="x">Senso di spostamento x: (1 verso destra, -1 verso sinistra)</param>
+        /// <param name="y">Senso di spostamento y: (1 verso il basso, -1 verso l'alto)</param>        
+        public void KeyFunction(int mx, int my, int x, int y)
         {
             if (campoGioco[mx + x, my + y] == 0)
             {
                 campoGioco[mx, my] = 0;
                 campoGioco[mx + x, my + y] = 3;
                 drawCampoGioco();
-
-                if (dir == 1)                
-                    m.Posy += y;                
-                else                    
-                    m.Posx += x;                
+                m.Posy += y;
+                m.Posx += x;
             }
             else if (campoGioco[mx + x, my + y] == 2)
             {
@@ -135,15 +139,13 @@ namespace Soko_ban
                     campoGioco[mx + (x * 2), my + (y * 2)] = 2;
                     m.Posy += y;
                     m.Posx += x;
-
                     for(int i = 0; i < vetpacchi.GetLength(0); i++)
-                    {
-                        if(dir==0)
-                            if(vetpacchi[i].position.X == mx + x && vetpacchi[i].position.Y == my + y)
-                            {
-                                vetpacchi[i].position.Y += y;
-                                vetpacchi[i].position.X += x;                               
-                            }
+                    {                        
+                        if(vetpacchi[i].Posx == mx + x && vetpacchi[i].Posy == my + y)
+                        {
+                            vetpacchi[i].Posy += y;
+                            vetpacchi[i].Posx += x;                               
+                        }
                     }                                    
                 }
             }

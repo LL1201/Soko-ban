@@ -9,11 +9,22 @@ namespace Soko_ban
 {  
     class Pacco
     {
-        public Point position;        
+        private Point position;        
         public Pacco(int x, int y)
         {
             position.X = x;
             position.Y = y;           
+        }
+
+        public int Posx
+        {
+            get => position.X;
+            set => position.X = value;
+        }
+        public int Posy
+        {
+            get => position.Y;
+            set => position.Y = value;
         }
     }
 }
