@@ -11,11 +11,21 @@ namespace Soko_ban
     {
         public Point position;
         
-        public Magazziniere(int x=7, int y=17)
+        public Magazziniere(int x, int y)
         {
             position.X = x;
             position.Y = y;
-        }        
+        }
 
+        public int Posx
+        {
+            get => position.X;
+            set => position.X = value;
+        }
+        public int Posy
+        {
+            get => position.Y;
+            set => position.Y = value;
+        }
     }
 }

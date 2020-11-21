@@ -56,7 +56,7 @@ namespace Soko_ban
                 {0, 0, 1, 0, 0, 2, 0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},//5
                 {1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1},//6
                 {1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1},//7
-                {1, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1},//8
+                {1, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 1},//8
                 {1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1},//9
                 {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},//10
                 {0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},//11
@@ -65,14 +65,14 @@ namespace Soko_ban
             for (int i = 0; i < campoGioco.GetLength(1); i++)
             {
                 for (int j = 0; j < campoGioco.GetLength(0); j++)
-                {                    
+                {
                     if (campoGioco[j, i] == 2)
                     {
                         vetpacchi[pospacchi] = new Pacco(j, i);
                         pospacchi++;
                     }
-                    else if (campoGioco[j, i] == 3)                    
-                        m = new Magazziniere();                    
+                    else if (campoGioco[j, i] == 3)
+                        m = new Magazziniere(j, i);                    
                 }
             }
             drawCampoGioco();
@@ -94,128 +94,35 @@ namespace Soko_ban
         {
             switch(e.KeyCode)
             {
-                case Keys.Left:                    
-                    if (campoGioco[m.position.X , m.position.Y-1] == 0)
-                    { 
-                        campoGioco[m.position.X, m.position.Y] = 0;
-                        campoGioco[m.position.X, m.position.Y - 1] = 3;
-                        drawCampoGioco();
-                        m.position.Y--;                       
-                    }
-                    else if (campoGioco[m.position.X, m.position.Y - 1] == 2)
-                    {
-                        if(campoGioco[m.position.X, m.position.Y - 2] == 0)
-                        {
-                            campoGioco[m.position.X, m.position.Y] = 0;
-                            campoGioco[m.position.X, m.position.Y - 1] = 3;
-                            for(int i=0;i<vetpacchi.GetLength(0);i++)
-                            {
-                                if (vetpacchi[i].position.X == m.position.X && vetpacchi[i].position.Y == m.position.Y - 1)
-                                {
-                                    campoGioco[vetpacchi[i].position.X, vetpacchi[i].position.Y - 1] = 2;
-                                    vetpacchi[i].position.Y--;
-                                    m.position.Y--;
-                                }
-                            }
-                            drawCampoGioco();                            
-                        }
-                    }
+                case Keys.Left:
+                    KeyFunction(m.Posx, m.Posy, 0, -1, 1);
                     break;
                 case Keys.Right:
-                    if (campoGioco[m.position.X, m.position.Y+1] == 0)
-                    {
-                        campoGioco[m.position.X, m.position.Y] = 0;
-                        campoGioco[m.position.X, m.position.Y + 1] = 3;
-                        drawCampoGioco();
-                        m.position.Y++;
-                    }
-                    else if (campoGioco[m.position.X, m.position.Y + 1] == 2)
-                    {
-                        if (campoGioco[m.position.X, m.position.Y + 2] == 0)
-                        {
-                            campoGioco[m.position.X, m.position.Y] = 0;
-                            campoGioco[m.position.X, m.position.Y + 1] = 3;
-                            for (int i = 0; i < vetpacchi.GetLength(0); i++)
-                            {
-                                if (vetpacchi[i].position.X == m.position.X && vetpacchi[i].position.Y == m.position.Y + 1)
-                                {
-                                    campoGioco[vetpacchi[i].position.X, vetpacchi[i].position.Y + 1] = 2;
-                                    vetpacchi[i].position.Y++;
-                                    m.position.Y++;
-                                }
-                            }
-                            drawCampoGioco();
-                        }
-                    }
+                    KeyFunction(m.Posx, m.Posy, 0, 1, 1);
                     break;
                 case Keys.Up:
-                    if (campoGioco[m.position.X-1, m.position.Y] == 0)
-                    {
-                        campoGioco[m.position.X, m.position.Y] = 0;
-                        campoGioco[m.position.X-1, m.position.Y] = 3;
-                        drawCampoGioco();
-                        m.position.X--;
-                    }
-                    else if (campoGioco[m.position.X-1, m.position.Y] == 2)
-                    {
-                        if (campoGioco[m.position.X - 2, m.position.Y] == 0)
-                        {
-                            campoGioco[m.position.X, m.position.Y] = 0;
-                            campoGioco[m.position.X-1, m.position.Y] = 3;
-                            for (int i = 0; i < vetpacchi.GetLength(0); i++)
-                            {
-                                if (vetpacchi[i].position.Y == m.position.Y && vetpacchi[i].position.X == m.position.X-1)
-                                {
-                                    campoGioco[vetpacchi[i].position.X-1, vetpacchi[i].position.Y] = 2;
-                                    vetpacchi[i].position.X--;
-                                    m.position.X--;
-                                }
-                            }
-                            drawCampoGioco();
-                        }
-                    }
+                    KeyFunction(m.Posx, m.Posy, -1, 0, 0);
                     break;
                 case Keys.Down:
-                    if (campoGioco[m.position.X + 1, m.position.Y] == 0)
-                    {
-                        campoGioco[m.position.X, m.position.Y] = 0;
-                        campoGioco[m.position.X + 1, m.position.Y] = 3;
-                        drawCampoGioco();
-                        m.position.X--;
-                    }
-                    else if (campoGioco[m.position.X + 1, m.position.Y] == 2)
-                    {
-                        if (campoGioco[m.position.X + 2, m.position.Y] == 0)
-                        {
-                            campoGioco[m.position.X, m.position.Y] = 0;
-                            campoGioco[m.position.X + 1, m.position.Y] = 3;
-                            for (int i = 0; i < vetpacchi.GetLength(0); i++)
-                            {
-                                if (vetpacchi[i].position.Y == m.position.Y && vetpacchi[i].position.X == m.position.X +1)
-                                {
-                                    campoGioco[vetpacchi[i].position.X + 1, vetpacchi[i].position.Y] = 2;
-                                    vetpacchi[i].position.X++;
-                                    m.position.X++;
-                                }
-                            }
-                            drawCampoGioco();
-                        }
-                    }
+                    KeyFunction(m.Posx, m.Posy, 1, 0, 0);
                     break;
             }
         }
 
-
-        public void KeyFunction(ref int mx, ref int my, int x, int y, int dir) //funzione che andrà a sostituire le operazioni di ogni singolo tasto
+        public void KeyFunction(int mx, int my, int x, int y, int dir) //funzione che andrà a sostituire le operazioni di ogni singolo tasto
         {
             if (campoGioco[mx + x, my + y] == 0)
             {
                 campoGioco[mx, my] = 0;
                 campoGioco[mx + x, my + y] = 3;
                 drawCampoGioco();
-                my++;
+
+                if (dir == 1)                
+                    m.Posy += y;                
+                else                    
+                    m.Posx += x;                
             }
-            else if (campoGioco[mx, my + y] == 2)
+            else if (campoGioco[mx + x, my + y] == 2)
             {
                 if (campoGioco[mx + (x * 2), my + (y * 2)] == 0)
                 {
@@ -223,19 +130,19 @@ namespace Soko_ban
                     campoGioco[mx + x, my + y] = 3;
                     for (int i = 0; i < vetpacchi.GetLength(0); i++)
                     {
-                        if (dir == 1)
-                            if (vetpacchi[i].position.X == mx && vetpacchi[i].position.Y == my + y)
+                        if (dir == 1) //dir 1 movimento orrizzontale
+                            if (vetpacchi[i].position.X == mx + x && vetpacchi[i].position.Y == my + y)
                             {
-                                campoGioco[vetpacchi[i].position.X, vetpacchi[i].position.Y + y] = 2;
+                                campoGioco[vetpacchi[i].position.X + x, vetpacchi[i].position.Y + y] = 2;
                                 vetpacchi[i].position.Y += y;
-                                my += y;
+                                m.Posy += y;
                             }
-                            else
-                            if (vetpacchi[i].position.Y == my && vetpacchi[i].position.X == mx + x)
+                        else
+                            if (vetpacchi[i].position.X == mx + x && vetpacchi[i].position.Y == my + y)
                             {
-                                campoGioco[vetpacchi[i].position.X, vetpacchi[i].position.Y + 1] = 2;
+                                campoGioco[vetpacchi[i].position.X + x, vetpacchi[i].position.Y + y] = 2;
                                 vetpacchi[i].position.X += x;
-                                mx += x;
+                                m.Posx += x;
                             }
                     }
                     drawCampoGioco();
@@ -264,4 +171,3 @@ namespace Soko_ban
 
     }
 }
-
