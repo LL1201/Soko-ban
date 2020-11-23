@@ -10,7 +10,7 @@ namespace Soko_ban
     class Magazziniere
     {
         private Point position;
-        //private 
+        private int mosse, spinte;
         
         public Magazziniere(int x, int y)
         {
@@ -26,6 +26,16 @@ namespace Soko_ban
         {
             get => position.Y;
             set => position.Y = value;
+        }
+        public int Mosse
+        {
+            get => mosse;
+            set => mosse = value;
+        }
+        public int Spinte
+        {
+            get => spinte;
+            set => spinte = value;
         }
     }
 }

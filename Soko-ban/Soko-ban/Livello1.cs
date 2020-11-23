@@ -42,6 +42,8 @@ namespace Soko_ban
                 }
             }
             lblLivello.Text = Convert.ToString(1);
+            lblMosse.Text = Convert.ToString(m.Mosse);
+            lblPushes.Text = Convert.ToString(m.Spinte);
             DrawingControl.ResumeDrawing(pnlCampoGioco);
         }
         private void Livello1_Load(object sender, EventArgs e)
@@ -76,7 +78,8 @@ namespace Soko_ban
                         m = new Magazziniere(j, i);                    
                 }
             }
-            drawCampoGioco();
+            drawCampoGioco();    
+           
         }
 
         void generaElementi(string percorso, int i, int j)
@@ -122,7 +125,7 @@ namespace Soko_ban
         /// <param name="x">Senso di spostamento x: (1 verso destra, -1 verso sinistra)</param>
         /// <param name="y">Senso di spostamento y: (1 verso il basso, -1 verso l'alto)</param>        
         public void KeyFunction(int mx, int my, int x, int y)
-        {
+        {            
             if (campoGioco[mx + x, my + y] == 0)
             {
                 campoGioco[mx, my] = 0;
@@ -130,9 +133,10 @@ namespace Soko_ban
                 drawCampoGioco();
                 m.Posy += y;
                 m.Posx += x;
+                m.Mosse++;
             }
             else if (campoGioco[mx + x, my + y] == 2)
-            {
+            {                
                 if (campoGioco[mx + (x * 2), my + (y * 2)] == 0)
                 {
                     campoGioco[mx, my] = 0;
@@ -145,7 +149,9 @@ namespace Soko_ban
                         if(vetpacchi[i].Posx == mx + x && vetpacchi[i].Posy == my + y)
                         {
                             vetpacchi[i].Posy += y;
-                            vetpacchi[i].Posx += x;                               
+                            vetpacchi[i].Posx += x;
+                            m.Spinte++;
+                            m.Mosse++;
                         }
                     }                                    
                 }
@@ -171,6 +177,9 @@ namespace Soko_ban
             }
         }
 
-      
+        private void tmrTempo_Tick(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
