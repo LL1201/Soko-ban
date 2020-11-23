@@ -32,7 +32,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblLivello = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblPunteggi = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblMosse = new System.Windows.Forms.Label();
+            this.lblPushes = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,11 +48,14 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.lblPunteggi);
+            this.panel1.Controls.Add(this.lblPushes);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.lblMosse);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.lblLivello);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 558);
+            this.panel1.Location = new System.Drawing.Point(0, 437);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(793, 47);
             this.panel1.TabIndex = 0;
@@ -74,27 +80,58 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Livello:";
             // 
-            // lblPunteggi
+            // label2
             // 
-            this.lblPunteggi.AutoSize = true;
-            this.lblPunteggi.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPunteggi.Location = new System.Drawing.Point(176, 12);
-            this.lblPunteggi.Name = "lblPunteggi";
-            this.lblPunteggi.Size = new System.Drawing.Size(139, 29);
-            this.lblPunteggi.TabIndex = 2;
-            this.lblPunteggi.Text = "Punteggio:";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(172, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 29);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Mosse:";
             // 
-            // Form1
+            // lblMosse
+            // 
+            this.lblMosse.AutoSize = true;
+            this.lblMosse.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMosse.Location = new System.Drawing.Point(296, 12);
+            this.lblMosse.Name = "lblMosse";
+            this.lblMosse.Size = new System.Drawing.Size(19, 29);
+            this.lblMosse.TabIndex = 3;
+            this.lblMosse.Text = ".";
+            
+            // 
+            // lblPushes
+            // 
+            this.lblPushes.AutoSize = true;
+            this.lblPushes.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPushes.Location = new System.Drawing.Point(492, 12);
+            this.lblPushes.Name = "lblPushes";
+            this.lblPushes.Size = new System.Drawing.Size(19, 29);
+            this.lblPushes.TabIndex = 5;
+            this.lblPushes.Text = ".";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(404, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(82, 29);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Spinte";
+            // 
+            // Livello1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(793, 605);
+            this.ClientSize = new System.Drawing.Size(793, 484);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlCampoGioco);
             this.KeyPreview = true;
-            this.Name = "Form1";
+            this.Name = "Livello1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Livello1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
@@ -110,7 +147,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblLivello;
-        private System.Windows.Forms.Label lblPunteggi;
+        private System.Windows.Forms.Label lblPushes;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblMosse;
+        private System.Windows.Forms.Label label2;
     }
 }
 

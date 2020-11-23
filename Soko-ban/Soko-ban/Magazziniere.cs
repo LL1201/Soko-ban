@@ -10,13 +10,13 @@ namespace Soko_ban
     class Magazziniere
     {
         private Point position;
+        //private 
         
         public Magazziniere(int x, int y)
         {
             position.X = x;
             position.Y = y;
         }
-
         public int Posx
         {
             get => position.X;

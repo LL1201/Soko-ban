@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Xml;
 
 namespace Soko_ban
 {
@@ -44,7 +45,7 @@ namespace Soko_ban
             DrawingControl.ResumeDrawing(pnlCampoGioco);
         }
         private void Livello1_Load(object sender, EventArgs e)
-        {
+        {            
             int pospacchi = 0;
             vetpacchi = new Pacco[6];
             campoGioco = new int[11, 19]
@@ -170,5 +171,6 @@ namespace Soko_ban
             }
         }
 
+      
     }
 }

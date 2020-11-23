@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?> 
+<root>
+	<level value="1">
+		<pacchi>6</pacchi>
+		<campogiocox>11</campogiocox>
+		<campogiocoy>19</campogiocoy>
+	</level>
+	<level value="2">
+		<pacchi>6</pacchi>
+		<campogiocox>11</campogiocox>
+		<campogiocoy>19</campogiocoy>
+	</level>
+</root>
