@@ -30,6 +30,8 @@ namespace Soko_ban
         {
             DrawingControl.SuspendDrawing(pnlCampoGioco);
             pnlCampoGioco.Controls.Clear();
+
+            //cicli per la scansione della matrice e l'inserimento delle immagini relative ai muri, pacchi e l'omino
             for ( int i = 0; i < campoGioco.GetLength(1); i++)
             {
                 for ( int j = 0; j < campoGioco.GetLength(0); j++)
@@ -48,16 +50,17 @@ namespace Soko_ban
             DrawingControl.ResumeDrawing(pnlCampoGioco);
         }
         private void Livello1_Load(object sender, EventArgs e)
-        {            
-            int dim = 0;
-            vetpacchi = new Pacco[6];
-
+        {
+            //apertura file JSON e assegnazione di tutto il suo contenuto a livelli facente parte della classe LevelsRoot
             StreamReader reader = new StreamReader("..\\..\\resources\\livelli.json");
             LevelsRoot livelli = JsonConvert.DeserializeObject<LevelsRoot>(reader.ReadToEnd());
             campoGioco = new int[livelli.Levels[0].Matrixr, livelli.Levels[0].Matrixc];
             lblLivello.Text = livelli.Levels[0].Name;
 
-            int cont = 0;
+            int cont = 0, pospacchi = 0;
+            vetpacchi = new Pacco[livelli.Levels[0].nPacchi];                    
+            
+            //cicli necessari per inserire i valori successivi della lista in una matrice ordinata
             do
             {
                 for (int i = 0; i < livelli.Levels[0].Matrixr; i++)
@@ -70,14 +73,15 @@ namespace Soko_ban
                 }
             } while (cont < livelli.Levels[0].Matrixr * livelli.Levels[0].Matrixc); 
 
+            //scansione matrice per verificare la presenza di muri e pacchi e quindi per la loro istanziazione
             for (int i = 0; i < campoGioco.GetLength(1); i++)
             {
                 for (int j = 0; j < campoGioco.GetLength(0); j++)
                 {
                     if (campoGioco[j, i] == 2)
                     {
-                        vetpacchi[dim] = new Pacco(j, i);
-                        dim++;
+                        vetpacchi[pospacchi] = new Pacco(j, i);
+                        pospacchi++;
                     }
                     else if (campoGioco[j, i] == 3)
                         m = new Magazziniere(j, i);                    
