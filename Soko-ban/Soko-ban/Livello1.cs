@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Xml;
+using Newtonsoft.Json;
 
 namespace Soko_ban
 {
@@ -47,23 +48,27 @@ namespace Soko_ban
             DrawingControl.ResumeDrawing(pnlCampoGioco);
         }
         private void Livello1_Load(object sender, EventArgs e)
-        {
+        {            
             int dim = 0;
-            vetpacchi = new Pacco[dim];
-            campoGioco = new int[11, 19]
+            vetpacchi = new Pacco[6];
+
+            StreamReader reader = new StreamReader("..\\..\\resources\\livelli.json");
+            LevelsRoot livelli = JsonConvert.DeserializeObject<LevelsRoot>(reader.ReadToEnd());
+            campoGioco = new int[livelli.Levels[0].Matrixr, livelli.Levels[0].Matrixc];
+            lblLivello.Text = livelli.Levels[0].Name;
+
+            int cont = 0;
+            do
             {
-                {0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//1
-                {0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//2
-                {0, 0, 0, 0, 1, 2, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//3
-                {0, 0, 1, 1, 1, 0, 0, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},//4
-                {0, 0, 1, 0, 0, 2, 0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},//5
-                {1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1},//6
-                {1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1},//7
-                {1, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 1},//8
-                {1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1},//9
-                {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},//10
-                {0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},//11
-            };
+                for (int i = 0; i < livelli.Levels[0].Matrixr; i++)
+                {                    
+                    for (int j = 0; j < livelli.Levels[0].Matrixc; j++)
+                    { 
+                        campoGioco[i, j] = livelli.Levels[0].Matrix[cont];
+                        cont++;
+                    }
+                }
+            } while (cont < livelli.Levels[0].Matrixr * livelli.Levels[0].Matrixc); 
 
             for (int i = 0; i < campoGioco.GetLength(1); i++)
             {
@@ -78,8 +83,8 @@ namespace Soko_ban
                         m = new Magazziniere(j, i);                    
                 }
             }
-            drawCampoGioco();    
-           
+            drawCampoGioco();
+            reader.Close();
         }
 
         void generaElementi(string percorso, int i, int j)

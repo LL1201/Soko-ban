@@ -16,6 +16,7 @@ namespace Soko_ban
         {
             position.X = x;
             position.Y = y;
+            mosse = spinte = 0;         
         }
         public int Posx
         {
