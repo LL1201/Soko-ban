@@ -47,9 +47,9 @@ namespace Soko_ban
             DrawingControl.ResumeDrawing(pnlCampoGioco);
         }
         private void Livello1_Load(object sender, EventArgs e)
-        {            
-            int pospacchi = 0;
-            vetpacchi = new Pacco[6];
+        {
+            int dim = 0;
+            vetpacchi = new Pacco[dim];
             campoGioco = new int[11, 19]
             {
                 {0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//1
@@ -71,8 +71,8 @@ namespace Soko_ban
                 {
                     if (campoGioco[j, i] == 2)
                     {
-                        vetpacchi[pospacchi] = new Pacco(j, i);
-                        pospacchi++;
+                        vetpacchi[dim] = new Pacco(j, i);
+                        dim++;
                     }
                     else if (campoGioco[j, i] == 3)
                         m = new Magazziniere(j, i);                    
