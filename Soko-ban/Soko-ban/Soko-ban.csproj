@@ -50,11 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LevelsRoot.cs" />
-    <Compile Include="Livello1.cs">
+    <Compile Include="Livello.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Livello1.Designer.cs">
-      <DependentUpon>Livello1.cs</DependentUpon>
+    <Compile Include="Livello.Designer.cs">
+      <DependentUpon>Livello.cs</DependentUpon>
     </Compile>
     <Compile Include="Magazziniere.cs" />
     <Compile Include="MenuGioco.cs">
@@ -66,8 +66,8 @@
     <Compile Include="Pacco.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Livello1.resx">
-      <DependentUpon>Livello1.cs</DependentUpon>
+    <EmbeddedResource Include="Livello.resx">
+      <DependentUpon>Livello.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuGioco.resx">
       <DependentUpon>MenuGioco.cs</DependentUpon>

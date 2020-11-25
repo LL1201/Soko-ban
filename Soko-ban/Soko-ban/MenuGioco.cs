@@ -19,7 +19,7 @@ namespace Soko_ban
 
         private void btnAvvia_Click(object sender, EventArgs e)
         {
-            Livello1 livello1 = new Livello1();
+            Livello livello1 = new Livello();
             livello1.livello = Convert.ToInt32(txtLevel.Text) - 1;
             livello1.LivShow();
         }

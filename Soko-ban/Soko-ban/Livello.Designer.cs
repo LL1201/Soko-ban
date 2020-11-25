@@ -1,6 +1,6 @@
 ﻿namespace Soko_ban
 {
-    partial class Livello1
+    partial class Livello
     {
         /// <summary>
         /// Variabile di progettazione necessaria.

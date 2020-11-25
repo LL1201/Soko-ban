@@ -14,7 +14,7 @@ using Newtonsoft.Json;
 
 namespace Soko_ban
 {
-    public partial class Livello1 : Form
+    public partial class Livello : Form
     {
         public int sizePacchi = 48;
         private int[,] campoGioco;
@@ -27,7 +27,7 @@ namespace Soko_ban
             this.ShowDialog();
         }
         
-        public Livello1()
+        public Livello()
         {
             InitializeComponent();
         }
