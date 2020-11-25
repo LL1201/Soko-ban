@@ -19,7 +19,13 @@ namespace Soko_ban
         public int sizePacchi = 48;
         private int[,] campoGioco;
         private Pacco[] vetpacchi;
-        private Magazziniere m;    
+        private Magazziniere m;
+        public int livello;
+        
+        public void LivShow()
+        {
+            this.ShowDialog();
+        }
         
         public Livello1()
         {
@@ -51,27 +57,28 @@ namespace Soko_ban
         }
         private void Livello1_Load(object sender, EventArgs e)
         {
+            
             //apertura file JSON e assegnazione di tutto il suo contenuto a livelli facente parte della classe LevelsRoot
             StreamReader reader = new StreamReader("..\\..\\resources\\livelli.json");
             LevelsRoot livelli = JsonConvert.DeserializeObject<LevelsRoot>(reader.ReadToEnd());
-            campoGioco = new int[livelli.Levels[0].Matrixr, livelli.Levels[0].Matrixc];
-            lblLivello.Text = livelli.Levels[0].Name;
+            campoGioco = new int[livelli.Levels[livello].Matrixr, livelli.Levels[0].Matrixc];
+            lblLivello.Text = livelli.Levels[livello].Name;
 
             int cont = 0, pospacchi = 0;
-            vetpacchi = new Pacco[livelli.Levels[0].nPacchi];                    
+            vetpacchi = new Pacco[livelli.Levels[livello].nPacchi];                    
             
             //cicli necessari per inserire i valori successivi della lista in una matrice ordinata
             do
             {
-                for (int i = 0; i < livelli.Levels[0].Matrixr; i++)
+                for (int i = 0; i < livelli.Levels[livello].Matrixr; i++)
                 {                    
-                    for (int j = 0; j < livelli.Levels[0].Matrixc; j++)
+                    for (int j = 0; j < livelli.Levels[livello].Matrixc; j++)
                     { 
-                        campoGioco[i, j] = livelli.Levels[0].Matrix[cont];
+                        campoGioco[i, j] = livelli.Levels[livello].Matrix[cont];
                         cont++;
                     }
                 }
-            } while (cont < livelli.Levels[0].Matrixr * livelli.Levels[0].Matrixc); 
+            } while (cont < livelli.Levels[livello].Matrixr * livelli.Levels[livello].Matrixc); 
 
             //scansione matrice per verificare la presenza di muri e pacchi e quindi per la loro istanziazione
             for (int i = 0; i < campoGioco.GetLength(1); i++)

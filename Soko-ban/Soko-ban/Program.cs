@@ -16,7 +16,7 @@ namespace Soko_ban
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Livello1());
+            Application.Run(new MenuGioco());
         }
     }
 }
