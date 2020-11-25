@@ -56,8 +56,7 @@ namespace Soko_ban
             DrawingControl.ResumeDrawing(pnlCampoGioco);
         }
         private void Livello1_Load(object sender, EventArgs e)
-        {
-            
+        {            
             //apertura file JSON e assegnazione di tutto il suo contenuto a livelli facente parte della classe LevelsRoot
             StreamReader reader = new StreamReader("..\\..\\resources\\livelli.json");
             LevelsRoot livelli = JsonConvert.DeserializeObject<LevelsRoot>(reader.ReadToEnd());
@@ -75,7 +74,7 @@ namespace Soko_ban
                     for (int j = 0; j < livelli.Levels[livello].Matrixc; j++)
                     { 
                         campoGioco[i, j] = livelli.Levels[livello].Matrix[cont];
-                        cont++;
+                        cont++;                        
                     }
                 }
             } while (cont < livelli.Levels[livello].Matrixr * livelli.Levels[livello].Matrixc); 
@@ -91,7 +90,7 @@ namespace Soko_ban
                         pospacchi++;
                     }
                     else if (campoGioco[j, i] == 3)
-                        m = new Magazziniere(j, i);                    
+                        m = new Magazziniere(j, i);                  
                 }
             }
             drawCampoGioco();

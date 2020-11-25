@@ -26,5 +26,7 @@ namespace Soko_ban
             get => position.Y;
             set => position.Y = value;
         }
+
+
     }
 }
