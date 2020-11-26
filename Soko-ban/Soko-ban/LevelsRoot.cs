@@ -12,6 +12,9 @@ namespace Soko_ban
         public int nPacchi;
         public int Matrixc;
         public int Matrixr;
+        public int Matrixpr;
+        public int Matrixpc;
+        public IList<int> Matrixp;
         public IList<int> Matrix;
     }
     class LevelsRoot
