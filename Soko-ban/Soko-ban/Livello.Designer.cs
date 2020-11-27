@@ -36,8 +36,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblMosse = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.tmrTempo = new System.Windows.Forms.Timer(this.components);
             this.lblLivello = new System.Windows.Forms.Label();
+            this.tmrTempo = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,11 +112,6 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Mosse:";
             // 
-            // tmrTempo
-            // 
-            this.tmrTempo.Interval = 1000;
-            this.tmrTempo.Tick += new System.EventHandler(this.tmrTempo_Tick);
-            // 
             // lblLivello
             // 
             this.lblLivello.AutoSize = true;
@@ -127,7 +122,12 @@
             this.lblLivello.Size = new System.Drawing.Size(0, 29);
             this.lblLivello.TabIndex = 0;
             // 
-            // Livello1
+            // tmrTempo
+            // 
+            this.tmrTempo.Interval = 1000;
+            this.tmrTempo.Tick += new System.EventHandler(this.tmrTempo_Tick);
+            // 
+            // Livello
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -137,8 +137,8 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlCampoGioco);
             this.KeyPreview = true;
-            this.Name = "Livello1";
-            this.Text = "Form1";
+            this.Name = "Livello";
+            this.Text = "Livello";
             this.Load += new System.EventHandler(this.Livello1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.panel1.ResumeLayout(false);

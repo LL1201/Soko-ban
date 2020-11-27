@@ -17,11 +17,20 @@ namespace Soko_ban
             InitializeComponent();
         }
 
-        private void btnAvvia_Click(object sender, EventArgs e)
+        private void btnLiv1_Click(object sender, EventArgs e)
         {
             Livello livello1 = new Livello();
-            livello1.livello = Convert.ToInt32(txtLevel.Text) - 1;
+            livello1.livello = 0;
             livello1.LivShow();
         }
+
+        private void btnLiv2_Click(object sender, EventArgs e)
+        {
+            Livello livello1 = new Livello();
+            livello1.livello = 1;
+            livello1.LivShow();
+        }
+
+
     }
 }
