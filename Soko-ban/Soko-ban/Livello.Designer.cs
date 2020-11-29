@@ -139,7 +139,7 @@
             this.KeyPreview = true;
             this.Name = "Livello";
             this.Text = "Livello";
-            this.Load += new System.EventHandler(this.Livello1_Load);
+            this.Load += new System.EventHandler(this.Livello_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

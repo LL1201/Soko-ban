@@ -31,6 +31,9 @@ namespace Soko_ban
             livello1.LivShow();
         }
 
+        private void MenuGioco_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

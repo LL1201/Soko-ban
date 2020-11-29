@@ -17,11 +17,14 @@ namespace Soko_ban
     public partial class Livello : Form
     {
         public int sizePacchi = 48;
-        private int[,] campoGioco;
-        private Pacco[] vetpacchi;
+        private int[,] campoGioco;        
+        private List<Pacco> lstPacchi = new List<Pacco>();
         private Magazziniere m;
         public int livello;
-        
+        private Image muro;
+        private Image pacco;
+        private Image magaziniere;
+
         public void LivShow()
         {
             this.ShowDialog();
@@ -35,36 +38,39 @@ namespace Soko_ban
         void drawCampoGioco()
         {
             DrawingControl.SuspendDrawing(pnlCampoGioco);
-            pnlCampoGioco.Controls.Clear();
-
+            pnlCampoGioco.Controls.Clear();            
+            
             //cicli per la scansione della matrice e l'inserimento delle immagini relative ai muri, pacchi e l'omino
             for ( int i = 0; i < campoGioco.GetLength(1); i++)
             {
                 for ( int j = 0; j < campoGioco.GetLength(0); j++)
                 {
                     if (campoGioco[j, i] == 1)                    
-                        generaElementi("..\\..\\images\\mattoni.jpg", i, j);                    
+                        generaElementi(i, j, muro);                    
                     else if(campoGioco[j, i]== 2)                    
-                        generaElementi("..\\..\\images\\cassa.jpg", i, j);                    
-                    else if(campoGioco[j,i]==3)                    
-                        generaElementi("..\\..\\images\\magazziniere.jpg", i, j);
+                        generaElementi(i, j, pacco);                    
+                    else if(campoGioco[j, i]==3)                    
+                        generaElementi(i, j, magaziniere);
                 }
-            }
-            lblLivello.Text = Convert.ToString(1);
+            }            
             lblMosse.Text = Convert.ToString(m.Mosse);
             lblPushes.Text = Convert.ToString(m.Spinte);
             DrawingControl.ResumeDrawing(pnlCampoGioco);
         }
-        private void Livello1_Load(object sender, EventArgs e)
+        private void Livello_Load(object sender, EventArgs e)
         {            
             //apertura file JSON e assegnazione di tutto il suo contenuto a livelli facente parte della classe LevelsRoot
             StreamReader reader = new StreamReader("..\\..\\resources\\livelli.json");
             LevelsRoot livelli = JsonConvert.DeserializeObject<LevelsRoot>(reader.ReadToEnd());
-            campoGioco = new int[livelli.Levels[livello].Matrixr, livelli.Levels[0].Matrixc];
+            campoGioco = new int[livelli.Levels[livello].Matrixr, livelli.Levels[livello].Matrixc];
             lblLivello.Text = livelli.Levels[livello].Name;
 
-            int cont = 0, pospacchi = 0;
-            vetpacchi = new Pacco[livelli.Levels[livello].nPacchi];                    
+            muro = Image.FromFile("..\\..\\images\\mattoni.jpg");
+            pacco = Image.FromFile("..\\..\\images\\cassa.jpg");
+            magaziniere = Image.FromFile("..\\..\\images\\magazziniere.jpg");
+
+            int cont = 0;
+            lstPacchi.Clear();                   
             
             //cicli necessari per inserire i valori successivi della lista in una matrice ordinata
             do
@@ -85,23 +91,20 @@ namespace Soko_ban
                 for (int j = 0; j < campoGioco.GetLength(0); j++)
                 {
                     if (campoGioco[j, i] == 2)
-                    {
-                        vetpacchi[pospacchi] = new Pacco(j, i);
-                        pospacchi++;
-                    }
+                        lstPacchi.Add(new Pacco(j, i));
                     else if (campoGioco[j, i] == 3)
                         m = new Magazziniere(j, i);                  
                 }
-            }
-            drawCampoGioco();
+            }            
             reader.Close();
+            drawCampoGioco();
         }
 
-        void generaElementi(string percorso, int i, int j)
+        void generaElementi(int i, int j, Image image)
         {
             pnlCampoGioco.Size = new Size(campoGioco.GetLength(1) * sizePacchi, (campoGioco.GetLength(0) * sizePacchi)+48);
-            PictureBox pbox = new PictureBox();
-            pbox.Image = new Bitmap(percorso);
+            PictureBox pbox = new PictureBox();            
+            pbox.Image = new Bitmap(image);
             pbox.SizeMode = PictureBoxSizeMode.StretchImage;
             pbox.Visible = true;
             pbox.Location = new Point(i * sizePacchi, j * sizePacchi);
@@ -159,16 +162,12 @@ namespace Soko_ban
                     campoGioco[mx + (x * 2), my + (y * 2)] = 2;
                     m.Posy += y;
                     m.Posx += x;
-                    for(int i = 0; i < vetpacchi.GetLength(0); i++)
-                    {                        
-                        if(vetpacchi[i].Posx == mx + x && vetpacchi[i].Posy == my + y)
-                        {
-                            vetpacchi[i].Posy += y;
-                            vetpacchi[i].Posx += x;
-                            m.Spinte++;
-                            m.Mosse++;
-                        }
-                    }                                    
+
+                    Pacco pacco = lstPacchi.Find(s => s.Posx == mx + x && s.Posy == my + y);
+                    pacco.Posx += x;
+                    pacco.Posy += y;
+                    m.Spinte++;
+                    m.Mosse++;                    
                 }
             }
         }
@@ -191,7 +190,12 @@ namespace Soko_ban
                 parent.Refresh();
             }
         }
-
+        
+        public void TriggerZone()
+        {
+            /*if (lstPacchi.Count(s => (s.Posx == 6 || s.Posx == 7 || s.Posx == 8) &&
+                 (s.Posy == 15 || s.Posy == 16 || s.Posy == 17)) == 6)*/ 
+        }
         private void tmrTempo_Tick(object sender, EventArgs e)
         {
             

@@ -27,7 +27,12 @@ namespace Soko_ban
             set => position.Y = value;
         }
 
-
-
+        public bool TriggerZone()
+        {
+            if ((Posx == 6 || Posx == 7 || Posx == 8) && (Posy == 15 || Posy == 16 || Posy == 17))
+                return true;
+            else
+                return false;
+        }
     }
 }
