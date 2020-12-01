@@ -24,8 +24,7 @@ namespace Soko_ban
         private Image muro;
         private Image pacco;
         private Image magaziniere;
-        private int tempo = 0;
-        PictureBox pboxm;
+        private int tempo = 0;        
 
         public void LivShow()
         {
@@ -116,15 +115,19 @@ namespace Soko_ban
             {
                 case Keys.Left:                    
                     KeyFunc(m.Posx, m.Posy, 0, -1);
+                    RefreshCampoGioco();
                     break;
                 case Keys.Right:                    
                     KeyFunc(m.Posx, m.Posy, 0, 1);
+                    RefreshCampoGioco();
                     break;
                 case Keys.Up:                    
                     KeyFunc(m.Posx, m.Posy, -1, 0);
+                    RefreshCampoGioco();
                     break;
                 case Keys.Down:                    
                     KeyFunc(m.Posx, m.Posy, 1, 0);
+                    RefreshCampoGioco();
                     break;
             }
         }
@@ -136,8 +139,7 @@ namespace Soko_ban
                 campoGioco[mx, my] = 0;                               
                 m.Posy += y;
                 m.Posx += x;
-                m.Mosse++;
-                RefreshCampoGioco();                
+                m.Mosse++;                               
             }
             else if (campoGioco[mx + x, my + y] == 2)
             {
@@ -152,8 +154,7 @@ namespace Soko_ban
                     pacco.Posx += x;
                     pacco.Posy += y;
                     m.Spinte++;
-                    m.Mosse++;
-                    RefreshCampoGioco();
+                    m.Mosse++;                    
                 }
             }
         }
