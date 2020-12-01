@@ -21,9 +21,7 @@ namespace Soko_ban
         private List<Pacco> lstPacchi = new List<Pacco>();
         private Magazziniere m;
         public int livello;
-        private Image muro;
-        private Image pacco;
-        private Image magaziniere;
+        private Image muro, pacco, magazziniere;        
         private int tempo = 0;        
 
         public void LivShow()
@@ -46,7 +44,7 @@ namespace Soko_ban
 
             muro = Image.FromFile("..\\..\\images\\mattoni.jpg");
             pacco = Image.FromFile("..\\..\\images\\cassa.jpg");
-            magaziniere = Image.FromFile("..\\..\\images\\magazziniere.jpg");
+            magazziniere = Image.FromFile("..\\..\\images\\magazziniere.jpg");
 
             int cont = 0;
             lstPacchi.Clear();
@@ -64,7 +62,7 @@ namespace Soko_ban
                 }
             } while (cont < livelli.Levels[livello].Matrixr * livelli.Levels[livello].Matrixc);
 
-            //scansione matrice per verificare la presenza di muri e pacchi e quindi per la loro istanziazione
+            //scansione matrice per verificare la presenza di muri e pacchi e quindi per la loro istanziazione e disegno
             for (int i = 0; i < campoGioco.GetLength(1); i++)
             {
                 for (int j = 0; j < campoGioco.GetLength(0); j++)
@@ -73,7 +71,7 @@ namespace Soko_ban
                         lstPacchi.Add(new Pacco(j, i, sizePacchi, pacco));
                     else if (campoGioco[j, i] == 3)
                     {
-                        m = new Magazziniere(j, i, sizePacchi, magaziniere);
+                        m = new Magazziniere(j, i, sizePacchi, magazziniere);
                         pnlCampoGioco.Controls.Add(m.pboxm);
                     }
                     else if (campoGioco[j, i] == 1)
@@ -90,22 +88,13 @@ namespace Soko_ban
 
                 }
             }
-            reader.Close();
-            RefreshCampoGioco();
-        }
-
-        void RefreshCampoGioco()
-        {
+            reader.Close();            
             foreach (Pacco p in lstPacchi)
-            {              
-                p.pboxp.Location = new Point(p.Posy * sizePacchi, p.Posx * sizePacchi);                
-                pnlCampoGioco.Controls.Add(p.pboxp);            
+            {
+                p.pboxp.Location = new Point(p.Posy * sizePacchi, p.Posx * sizePacchi);
+                pnlCampoGioco.Controls.Add(p.pboxp);
             }
-            
-            lblMosse.Text = Convert.ToString(m.Mosse);
-            lblPushes.Text = Convert.ToString(m.Spinte);
-            m.pboxm.Location = new Point(m.Posy * sizePacchi, m.Posx * sizePacchi);            
-        }        
+        }     
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -114,20 +103,16 @@ namespace Soko_ban
             switch (e.KeyCode)
             {
                 case Keys.Left:                    
-                    KeyFunc(m.Posx, m.Posy, 0, -1);
-                    RefreshCampoGioco();
+                    KeyFunc(m.Posx, m.Posy, 0, -1);                    
                     break;
                 case Keys.Right:                    
-                    KeyFunc(m.Posx, m.Posy, 0, 1);
-                    RefreshCampoGioco();
+                    KeyFunc(m.Posx, m.Posy, 0, 1);                   
                     break;
                 case Keys.Up:                    
-                    KeyFunc(m.Posx, m.Posy, -1, 0);
-                    RefreshCampoGioco();
+                    KeyFunc(m.Posx, m.Posy, -1, 0);                    
                     break;
                 case Keys.Down:                    
-                    KeyFunc(m.Posx, m.Posy, 1, 0);
-                    RefreshCampoGioco();
+                    KeyFunc(m.Posx, m.Posy, 1, 0);                    
                     break;
             }
         }
@@ -139,7 +124,9 @@ namespace Soko_ban
                 campoGioco[mx, my] = 0;                               
                 m.Posy += y;
                 m.Posx += x;
-                m.Mosse++;                               
+                m.Mosse++;
+                lblMosse.Text = Convert.ToString(m.Mosse);
+                lblPushes.Text = Convert.ToString(m.Spinte);
             }
             else if (campoGioco[mx + x, my + y] == 2)
             {
@@ -154,7 +141,9 @@ namespace Soko_ban
                     pacco.Posx += x;
                     pacco.Posy += y;
                     m.Spinte++;
-                    m.Mosse++;                    
+                    m.Mosse++;
+                    lblMosse.Text = Convert.ToString(m.Mosse);
+                    lblPushes.Text = Convert.ToString(m.Spinte);
                 }
             }
         }
