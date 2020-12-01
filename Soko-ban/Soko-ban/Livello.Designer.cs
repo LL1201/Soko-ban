@@ -66,11 +66,11 @@
             // 
             this.lblTempo.AutoSize = true;
             this.lblTempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTempo.Location = new System.Drawing.Point(627, 9);
+            this.lblTempo.Location = new System.Drawing.Point(664, 9);
             this.lblTempo.Name = "lblTempo";
-            this.lblTempo.Size = new System.Drawing.Size(79, 29);
+            this.lblTempo.Size = new System.Drawing.Size(103, 29);
             this.lblTempo.TabIndex = 6;
-            this.lblTempo.Text = "label3";
+            this.lblTempo.Text = "00:00:00";
             // 
             // lblPushes
             // 

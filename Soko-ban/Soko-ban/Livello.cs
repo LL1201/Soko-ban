@@ -17,19 +17,20 @@ namespace Soko_ban
     public partial class Livello : Form
     {
         public int sizePacchi = 48;
-        private int[,] campoGioco;        
+        private int[,] campoGioco;
         private List<Pacco> lstPacchi = new List<Pacco>();
         private Magazziniere m;
         public int livello;
         private Image muro;
         private Image pacco;
         private Image magaziniere;
+        private int tempo = 0;
 
         public void LivShow()
         {
             this.ShowDialog();
         }
-        
+
         public Livello()
         {
             InitializeComponent();
@@ -38,27 +39,27 @@ namespace Soko_ban
         void drawCampoGioco()
         {
             DrawingControl.SuspendDrawing(pnlCampoGioco);
-            pnlCampoGioco.Controls.Clear();            
-            
+            pnlCampoGioco.Controls.Clear();
+
             //cicli per la scansione della matrice e l'inserimento delle immagini relative ai muri, pacchi e l'omino
-            for ( int i = 0; i < campoGioco.GetLength(1); i++)
+            for (int i = 0; i < campoGioco.GetLength(1); i++)
             {
-                for ( int j = 0; j < campoGioco.GetLength(0); j++)
+                for (int j = 0; j < campoGioco.GetLength(0); j++)
                 {
-                    if (campoGioco[j, i] == 1)                    
-                        generaElementi(i, j, muro);                    
-                    else if(campoGioco[j, i]== 2)                    
-                        generaElementi(i, j, pacco);                    
-                    else if(campoGioco[j, i]==3)                    
+                    if (campoGioco[j, i] == 1)
+                        generaElementi(i, j, muro);
+                    else if (campoGioco[j, i] == 2)
+                        generaElementi(i, j, pacco);
+                    else if (campoGioco[j, i] == 3)
                         generaElementi(i, j, magaziniere);
                 }
-            }            
+            }
             lblMosse.Text = Convert.ToString(m.Mosse);
             lblPushes.Text = Convert.ToString(m.Spinte);
             DrawingControl.ResumeDrawing(pnlCampoGioco);
         }
         private void Livello_Load(object sender, EventArgs e)
-        {            
+        {
             //apertura file JSON e assegnazione di tutto il suo contenuto a livelli facente parte della classe LevelsRoot
             StreamReader reader = new StreamReader("..\\..\\resources\\livelli.json");
             LevelsRoot livelli = JsonConvert.DeserializeObject<LevelsRoot>(reader.ReadToEnd());
@@ -70,20 +71,20 @@ namespace Soko_ban
             magaziniere = Image.FromFile("..\\..\\images\\magazziniere.jpg");
 
             int cont = 0;
-            lstPacchi.Clear();                   
-            
+            lstPacchi.Clear();
+
             //cicli necessari per inserire i valori successivi della lista in una matrice ordinata
             do
             {
                 for (int i = 0; i < livelli.Levels[livello].Matrixr; i++)
-                {                    
+                {
                     for (int j = 0; j < livelli.Levels[livello].Matrixc; j++)
-                    { 
+                    {
                         campoGioco[i, j] = livelli.Levels[livello].Matrix[cont];
-                        cont++;                        
+                        cont++;
                     }
                 }
-            } while (cont < livelli.Levels[livello].Matrixr * livelli.Levels[livello].Matrixc); 
+            } while (cont < livelli.Levels[livello].Matrixr * livelli.Levels[livello].Matrixc);
 
             //scansione matrice per verificare la presenza di muri e pacchi e quindi per la loro istanziazione
             for (int i = 0; i < campoGioco.GetLength(1); i++)
@@ -93,17 +94,17 @@ namespace Soko_ban
                     if (campoGioco[j, i] == 2)
                         lstPacchi.Add(new Pacco(j, i));
                     else if (campoGioco[j, i] == 3)
-                        m = new Magazziniere(j, i);                  
+                        m = new Magazziniere(j, i);
                 }
-            }            
+            }
             reader.Close();
             drawCampoGioco();
         }
 
         void generaElementi(int i, int j, Image image)
         {
-            pnlCampoGioco.Size = new Size(campoGioco.GetLength(1) * sizePacchi, (campoGioco.GetLength(0) * sizePacchi)+48);
-            PictureBox pbox = new PictureBox();            
+            pnlCampoGioco.Size = new Size(campoGioco.GetLength(1) * sizePacchi, (campoGioco.GetLength(0) * sizePacchi) + 48);
+            PictureBox pbox = new PictureBox();
             pbox.Image = new Bitmap(image);
             pbox.SizeMode = PictureBoxSizeMode.StretchImage;
             pbox.Visible = true;
@@ -111,10 +112,12 @@ namespace Soko_ban
             pbox.Size = new Size(sizePacchi, sizePacchi);
             pnlCampoGioco.Controls.Add(pbox);
         }
-        
+
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            switch(e.KeyCode)
+            if (tmrTempo.Enabled == false)
+                tmrTempo.Enabled = true;
+            switch (e.KeyCode)
             {
                 case Keys.Left:
                     KeyFunction(m.Posx, m.Posy, 0, -1);
@@ -129,7 +132,7 @@ namespace Soko_ban
                     drawCampoGioco();
                     break;
                 case Keys.Down:
-                    KeyFunction(m.Posx, m.Posy, 1, 0);                   
+                    KeyFunction(m.Posx, m.Posy, 1, 0);
                     drawCampoGioco();
                     break;
             }
@@ -143,7 +146,7 @@ namespace Soko_ban
         /// <param name="x">Senso di spostamento x: (1 verso destra, -1 verso sinistra)</param>
         /// <param name="y">Senso di spostamento y: (1 verso il basso, -1 verso l'alto)</param>        
         public void KeyFunction(int mx, int my, int x, int y)
-        {            
+        {
             if (campoGioco[mx + x, my + y] == 0)
             {
                 campoGioco[mx, my] = 0;
@@ -154,7 +157,7 @@ namespace Soko_ban
                 m.Mosse++;
             }
             else if (campoGioco[mx + x, my + y] == 2)
-            {                
+            {
                 if (campoGioco[mx + (x * 2), my + (y * 2)] == 0)
                 {
                     campoGioco[mx, my] = 0;
@@ -167,11 +170,11 @@ namespace Soko_ban
                     pacco.Posx += x;
                     pacco.Posy += y;
                     m.Spinte++;
-                    m.Mosse++;                    
+                    m.Mosse++;
                 }
             }
         }
-            
+
         class DrawingControl
         {
             [DllImport("user32.dll")]
@@ -190,15 +193,11 @@ namespace Soko_ban
                 parent.Refresh();
             }
         }
-        
-        public void TriggerZone()
-        {
-            /*if (lstPacchi.Count(s => (s.Posx == 6 || s.Posx == 7 || s.Posx == 8) &&
-                 (s.Posy == 15 || s.Posy == 16 || s.Posy == 17)) == 6)*/ 
-        }
+
         private void tmrTempo_Tick(object sender, EventArgs e)
         {
-            
+            tempo++;
+            lblTempo.Text = Convert.ToString(TimeSpan.FromSeconds(tempo));
         }
     }
 }
