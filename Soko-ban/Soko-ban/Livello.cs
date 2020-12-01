@@ -101,6 +101,10 @@ namespace Soko_ban
             drawCampoGioco();
         }
 
+        void RefreshCampoGioco()
+        {
+
+        }
         void generaElementi(int i, int j, Image image)
         {
             pnlCampoGioco.Size = new Size(campoGioco.GetLength(1) * sizePacchi, (campoGioco.GetLength(0) * sizePacchi) + 48);
