@@ -25,6 +25,7 @@ namespace Soko_ban
         private Image pacco;
         private Image magaziniere;
         private int tempo = 0;
+        PictureBox pboxm;
 
         public void LivShow()
         {
@@ -35,29 +36,7 @@ namespace Soko_ban
         {
             InitializeComponent();
         }
-
-        void drawCampoGioco()
-        {
-            DrawingControl.SuspendDrawing(pnlCampoGioco);
-            pnlCampoGioco.Controls.Clear();
-
-            //cicli per la scansione della matrice e l'inserimento delle immagini relative ai muri, pacchi e l'omino
-            for (int i = 0; i < campoGioco.GetLength(1); i++)
-            {
-                for (int j = 0; j < campoGioco.GetLength(0); j++)
-                {
-                    if (campoGioco[j, i] == 1)
-                        generaElementi(i, j, muro);
-                    else if (campoGioco[j, i] == 2)
-                        generaElementi(i, j, pacco);
-                    else if (campoGioco[j, i] == 3)
-                        generaElementi(i, j, magaziniere);
-                }
-            }
-            lblMosse.Text = Convert.ToString(m.Mosse);
-            lblPushes.Text = Convert.ToString(m.Spinte);
-            DrawingControl.ResumeDrawing(pnlCampoGioco);
-        }
+        
         private void Livello_Load(object sender, EventArgs e)
         {
             //apertura file JSON e assegnazione di tutto il suo contenuto a livelli facente parte della classe LevelsRoot
@@ -92,30 +71,42 @@ namespace Soko_ban
                 for (int j = 0; j < campoGioco.GetLength(0); j++)
                 {
                     if (campoGioco[j, i] == 2)
-                        lstPacchi.Add(new Pacco(j, i));
+                        lstPacchi.Add(new Pacco(j, i, sizePacchi, pacco));
                     else if (campoGioco[j, i] == 3)
-                        m = new Magazziniere(j, i);
+                    {
+                        m = new Magazziniere(j, i, sizePacchi, magaziniere);
+                        pnlCampoGioco.Controls.Add(m.pboxm);
+                    }
+                    else if (campoGioco[j, i] == 1)
+                    {
+                        pnlCampoGioco.Size = new Size(campoGioco.GetLength(1) * sizePacchi, (campoGioco.GetLength(0) * sizePacchi) + 48);
+                        PictureBox pbox = new PictureBox();
+                        pbox.Image = new Bitmap(muro);
+                        pbox.SizeMode = PictureBoxSizeMode.StretchImage;
+                        pbox.Visible = true;
+                        pbox.Location = new Point(i * sizePacchi, j * sizePacchi);
+                        pbox.Size = new Size(sizePacchi, sizePacchi);
+                        pnlCampoGioco.Controls.Add(pbox);
+                    }
+
                 }
             }
             reader.Close();
-            drawCampoGioco();
+            RefreshCampoGioco();
         }
 
         void RefreshCampoGioco()
         {
-
-        }
-        void generaElementi(int i, int j, Image image)
-        {
-            pnlCampoGioco.Size = new Size(campoGioco.GetLength(1) * sizePacchi, (campoGioco.GetLength(0) * sizePacchi) + 48);
-            PictureBox pbox = new PictureBox();
-            pbox.Image = new Bitmap(image);
-            pbox.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbox.Visible = true;
-            pbox.Location = new Point(i * sizePacchi, j * sizePacchi);
-            pbox.Size = new Size(sizePacchi, sizePacchi);
-            pnlCampoGioco.Controls.Add(pbox);
-        }
+            foreach (Pacco p in lstPacchi)
+            {              
+                p.pboxp.Location = new Point(p.Posy * sizePacchi, p.Posx * sizePacchi);                
+                pnlCampoGioco.Controls.Add(p.pboxp);            
+            }
+            
+            lblMosse.Text = Convert.ToString(m.Mosse);
+            lblPushes.Text = Convert.ToString(m.Spinte);
+            m.pboxm.Location = new Point(m.Posy * sizePacchi, m.Posx * sizePacchi);            
+        }        
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -123,49 +114,36 @@ namespace Soko_ban
                 tmrTempo.Enabled = true;
             switch (e.KeyCode)
             {
-                case Keys.Left:
-                    KeyFunction(m.Posx, m.Posy, 0, -1);
-                    drawCampoGioco();
+                case Keys.Left:                    
+                    KeyFunc(m.Posx, m.Posy, 0, -1);
                     break;
-                case Keys.Right:
-                    KeyFunction(m.Posx, m.Posy, 0, 1);
-                    drawCampoGioco();
+                case Keys.Right:                    
+                    KeyFunc(m.Posx, m.Posy, 0, 1);
                     break;
-                case Keys.Up:
-                    KeyFunction(m.Posx, m.Posy, -1, 0);
-                    drawCampoGioco();
+                case Keys.Up:                    
+                    KeyFunc(m.Posx, m.Posy, -1, 0);
                     break;
-                case Keys.Down:
-                    KeyFunction(m.Posx, m.Posy, 1, 0);
-                    drawCampoGioco();
+                case Keys.Down:                    
+                    KeyFunc(m.Posx, m.Posy, 1, 0);
                     break;
             }
         }
 
-        /// <summary>
-        /// A seconda del tasto premuto muove l'omino in giro per il labirinto
-        /// </summary>
-        /// <param name="mx">Posizione x dell'omino</param>
-        /// <param name="my">Posizione y dell'omino</param>
-        /// <param name="x">Senso di spostamento x: (1 verso destra, -1 verso sinistra)</param>
-        /// <param name="y">Senso di spostamento y: (1 verso il basso, -1 verso l'alto)</param>        
-        public void KeyFunction(int mx, int my, int x, int y)
+        public void KeyFunc(int mx, int my, int x, int y)
         {
             if (campoGioco[mx + x, my + y] == 0)
             {
-                campoGioco[mx, my] = 0;
-                campoGioco[mx + x, my + y] = 3;
-                drawCampoGioco();
+                campoGioco[mx, my] = 0;                               
                 m.Posy += y;
                 m.Posx += x;
                 m.Mosse++;
+                RefreshCampoGioco();                
             }
             else if (campoGioco[mx + x, my + y] == 2)
             {
                 if (campoGioco[mx + (x * 2), my + (y * 2)] == 0)
                 {
-                    campoGioco[mx, my] = 0;
-                    campoGioco[mx + x, my + y] = 3;
+                    campoGioco[mx, my] = 0;                    
                     campoGioco[mx + (x * 2), my + (y * 2)] = 2;
                     m.Posy += y;
                     m.Posx += x;
@@ -175,26 +153,8 @@ namespace Soko_ban
                     pacco.Posy += y;
                     m.Spinte++;
                     m.Mosse++;
+                    RefreshCampoGioco();
                 }
-            }
-        }
-
-        class DrawingControl
-        {
-            [DllImport("user32.dll")]
-            public static extern int SendMessage(IntPtr hWnd, Int32 wMsg, bool wParam, Int32 lParam);
-
-            private const int WM_SETREDRAW = 11;
-
-            public static void SuspendDrawing(Control parent)
-            {
-                SendMessage(parent.Handle, WM_SETREDRAW, false, 0);
-            }
-
-            public static void ResumeDrawing(Control parent)
-            {
-                SendMessage(parent.Handle, WM_SETREDRAW, true, 0);
-                parent.Refresh();
             }
         }
 

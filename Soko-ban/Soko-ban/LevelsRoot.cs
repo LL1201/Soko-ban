@@ -19,6 +19,6 @@ namespace Soko_ban
     }
     class LevelsRoot
     {
-        public IList<Level> Levels;
+        public IList<Level> Levels;        
     }
 }
