@@ -44,6 +44,6 @@ namespace Soko_ban
                 position.Y = value;
                 pboxp.Location = new Point(position.Y * sizePacchi, position.X * sizePacchi);
             }
-        }        
+        }
     }
 }

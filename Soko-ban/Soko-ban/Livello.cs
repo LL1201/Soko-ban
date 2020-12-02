@@ -1,16 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.IO;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using System.Xml;
-using Newtonsoft.Json;
 
 namespace Soko_ban
 {
@@ -21,19 +14,20 @@ namespace Soko_ban
         private List<Pacco> lstPacchi = new List<Pacco>();
         private Magazziniere m;
         public int livello;
-        private Image muro, pacco, magazziniere, trigger;        
-        private int tempo = 0;        
+        private Image muro, pacco, magazziniere;
+        private int tempo;
 
         public void LivShow()
         {
             this.ShowDialog();
+            tempo = 0;
         }
 
         public Livello()
         {
             InitializeComponent();
         }
-        
+
         private void Livello_Load(object sender, EventArgs e)
         {
             //apertura file JSON e assegnazione di tutto il suo contenuto a livelli facente parte della classe LevelsRoot
@@ -44,7 +38,7 @@ namespace Soko_ban
 
             muro = Image.FromFile("..\\..\\images\\mattoni.jpg");
             pacco = Image.FromFile("..\\..\\images\\cassa.jpg");
-            magazziniere = Image.FromFile("..\\..\\images\\magazziniere.jpg");            
+            magazziniere = Image.FromFile("..\\..\\images\\magazziniere.jpg");
 
             int cont = 0;
             lstPacchi.Clear();
@@ -75,7 +69,7 @@ namespace Soko_ban
                         pnlCampoGioco.Controls.Add(m.pboxm);
                     }
                     else if (campoGioco[j, i] == 1)
-                    {                        
+                    {
                         PictureBox pbox = new PictureBox();
                         pbox.Image = new Bitmap(muro);
                         pbox.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -84,26 +78,15 @@ namespace Soko_ban
                         pbox.Size = new Size(sizePacchi, sizePacchi);
                         pnlCampoGioco.Controls.Add(pbox);
                     }
-                    /*else if (campoGioco[j, i] == -1)
-                    {
-                        PictureBox pbox = new PictureBox();
-                        pbox.Image = new Bitmap(trigger);
-                        pbox.SizeMode = PictureBoxSizeMode.StretchImage;
-                        pbox.Visible = true;
-                        pbox.Location = new Point(i * sizePacchi, j * sizePacchi);
-                        pbox.Size = new Size(sizePacchi, sizePacchi);
-                        pnlCampoGioco.Controls.Add(pbox);
-                    }*/
-
                 }
             }
-            reader.Close();            
+            reader.Close();
             foreach (Pacco p in lstPacchi)
             {
                 p.pboxp.Location = new Point(p.Posy * sizePacchi, p.Posx * sizePacchi);
                 pnlCampoGioco.Controls.Add(p.pboxp);
             }
-        }     
+        }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -111,17 +94,21 @@ namespace Soko_ban
                 tmrTempo.Enabled = true;
             switch (e.KeyCode)
             {
-                case Keys.Left:                    
-                    KeyFunc(m.Posx, m.Posy, 0, -1);                    
+                case Keys.Left:
+                    KeyFunc(m.Posx, m.Posy, 0, -1);
+                    Trigger();
                     break;
-                case Keys.Right:                    
-                    KeyFunc(m.Posx, m.Posy, 0, 1);                   
+                case Keys.Right:
+                    KeyFunc(m.Posx, m.Posy, 0, 1);
+                    Trigger();
                     break;
-                case Keys.Up:                    
-                    KeyFunc(m.Posx, m.Posy, -1, 0);                    
+                case Keys.Up:
+                    KeyFunc(m.Posx, m.Posy, -1, 0);
+                    Trigger();
                     break;
-                case Keys.Down:                    
-                    KeyFunc(m.Posx, m.Posy, 1, 0);                    
+                case Keys.Down:
+                    KeyFunc(m.Posx, m.Posy, 1, 0);
+                    Trigger();
                     break;
             }
         }
@@ -130,16 +117,16 @@ namespace Soko_ban
         {
             if (campoGioco[mx + x, my + y] == 0)
             {
-                campoGioco[mx, my] = 0;                               
+                campoGioco[mx, my] = 0;
                 m.Posy += y;
                 m.Posx += x;
-                m.Mosse++;                
+                m.Mosse++;
             }
             else if (campoGioco[mx + x, my + y] == 2)
             {
                 if (campoGioco[mx + (x * 2), my + (y * 2)] == 0)
                 {
-                    campoGioco[mx, my] = 0;                    
+                    campoGioco[mx, my] = 0;
                     campoGioco[mx + (x * 2), my + (y * 2)] = 2;
                     m.Posy += y;
                     m.Posx += x;
@@ -148,7 +135,7 @@ namespace Soko_ban
                     pacco.Posx += x;
                     pacco.Posy += y;
                     m.Spinte++;
-                    m.Mosse++;                    
+                    m.Mosse++;
                 }
             }
             lblMosse.Text = Convert.ToString(m.Mosse);
@@ -159,6 +146,27 @@ namespace Soko_ban
         {
             tempo++;
             lblTempo.Text = Convert.ToString(TimeSpan.FromSeconds(tempo));
-        }        
+        }
+
+        public void Trigger()
+        {
+            int count = 1;
+
+            for(int i = 6; i < 8; i++)
+            {
+                for(int j = 17; j < 18; j++)
+                {
+                    if (campoGioco[i, j] == 2)
+                        count++;
+                }
+            }
+           
+            if (count == lstPacchi.Count)
+            {
+                Livello livello = new Livello();
+                livello.livello++;
+                livello.LivShow();
+            }
+        }
     }
 }
