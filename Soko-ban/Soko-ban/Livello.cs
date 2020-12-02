@@ -21,7 +21,7 @@ namespace Soko_ban
         private List<Pacco> lstPacchi = new List<Pacco>();
         private Magazziniere m;
         public int livello;
-        private Image muro, pacco, magazziniere;        
+        private Image muro, pacco, magazziniere, trigger;        
         private int tempo = 0;        
 
         public void LivShow()
@@ -44,7 +44,7 @@ namespace Soko_ban
 
             muro = Image.FromFile("..\\..\\images\\mattoni.jpg");
             pacco = Image.FromFile("..\\..\\images\\cassa.jpg");
-            magazziniere = Image.FromFile("..\\..\\images\\magazziniere.jpg");
+            magazziniere = Image.FromFile("..\\..\\images\\magazziniere.jpg");            
 
             int cont = 0;
             lstPacchi.Clear();
@@ -61,7 +61,7 @@ namespace Soko_ban
                     }
                 }
             } while (cont < livelli.Levels[livello].Matrixr * livelli.Levels[livello].Matrixc);
-
+            pnlCampoGioco.Size = new Size(campoGioco.GetLength(1) * sizePacchi, (campoGioco.GetLength(0) * sizePacchi) + 48);
             //scansione matrice per verificare la presenza di muri e pacchi e quindi per la loro istanziazione e disegno
             for (int i = 0; i < campoGioco.GetLength(1); i++)
             {
@@ -75,8 +75,7 @@ namespace Soko_ban
                         pnlCampoGioco.Controls.Add(m.pboxm);
                     }
                     else if (campoGioco[j, i] == 1)
-                    {
-                        pnlCampoGioco.Size = new Size(campoGioco.GetLength(1) * sizePacchi, (campoGioco.GetLength(0) * sizePacchi) + 48);
+                    {                        
                         PictureBox pbox = new PictureBox();
                         pbox.Image = new Bitmap(muro);
                         pbox.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -85,6 +84,16 @@ namespace Soko_ban
                         pbox.Size = new Size(sizePacchi, sizePacchi);
                         pnlCampoGioco.Controls.Add(pbox);
                     }
+                    /*else if (campoGioco[j, i] == -1)
+                    {
+                        PictureBox pbox = new PictureBox();
+                        pbox.Image = new Bitmap(trigger);
+                        pbox.SizeMode = PictureBoxSizeMode.StretchImage;
+                        pbox.Visible = true;
+                        pbox.Location = new Point(i * sizePacchi, j * sizePacchi);
+                        pbox.Size = new Size(sizePacchi, sizePacchi);
+                        pnlCampoGioco.Controls.Add(pbox);
+                    }*/
 
                 }
             }
@@ -124,9 +133,7 @@ namespace Soko_ban
                 campoGioco[mx, my] = 0;                               
                 m.Posy += y;
                 m.Posx += x;
-                m.Mosse++;
-                lblMosse.Text = Convert.ToString(m.Mosse);
-                lblPushes.Text = Convert.ToString(m.Spinte);
+                m.Mosse++;                
             }
             else if (campoGioco[mx + x, my + y] == 2)
             {
@@ -141,17 +148,17 @@ namespace Soko_ban
                     pacco.Posx += x;
                     pacco.Posy += y;
                     m.Spinte++;
-                    m.Mosse++;
-                    lblMosse.Text = Convert.ToString(m.Mosse);
-                    lblPushes.Text = Convert.ToString(m.Spinte);
+                    m.Mosse++;                    
                 }
             }
+            lblMosse.Text = Convert.ToString(m.Mosse);
+            lblPushes.Text = Convert.ToString(m.Spinte);
         }
 
         private void tmrTempo_Tick(object sender, EventArgs e)
         {
             tempo++;
             lblTempo.Text = Convert.ToString(TimeSpan.FromSeconds(tempo));
-        }
+        }        
     }
 }
