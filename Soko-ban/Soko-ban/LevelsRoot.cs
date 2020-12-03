@@ -14,6 +14,10 @@ namespace Soko_ban
         public int Matrixr;
         public int Matrixpr;
         public int Matrixpc;
+        public int TriggerXi;
+        public int TriggerXf;
+        public int TriggerYi;
+        public int TriggerYf;
         public IList<int> Matrixp;
         public IList<int> Matrix;
     }

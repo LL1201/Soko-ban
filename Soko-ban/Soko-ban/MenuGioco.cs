@@ -19,14 +19,14 @@ namespace Soko_ban
 
         private void btnLiv1_Click(object sender, EventArgs e)
         {
-            Livello livello1 = new Livello();
+            frmLivello livello1 = new frmLivello();
             livello1.livello = 0;
             livello1.LivShow();
         }
 
         private void btnLiv2_Click(object sender, EventArgs e)
         {
-            Livello livello1 = new Livello();
+            frmLivello livello1 = new frmLivello();
             livello1.livello = 1;
             livello1.LivShow();
         }
