@@ -1,44 +1,51 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.IO;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using System.Xml;
+using Newtonsoft.Json;
 
 namespace Soko_ban
 {
-    public partial class Livello : Form
+    public partial class frmLivello : Form
     {
         public int sizePacchi = 48;
         private int[,] campoGioco;
         private List<Pacco> lstPacchi = new List<Pacco>();
         private Magazziniere m;
         public int livello;
-        private Image muro, pacco, magazziniere;
+        private Image muro, pacco, magazziniere;        
         private int tempo;
+        LevelsRoot livelli;
 
         public void LivShow()
         {
-            this.ShowDialog();
-            tempo = 0;
+            this.Show();
         }
 
-        public Livello()
+        public frmLivello()
         {
             InitializeComponent();
         }
-
+        
         private void Livello_Load(object sender, EventArgs e)
         {
             //apertura file JSON e assegnazione di tutto il suo contenuto a livelli facente parte della classe LevelsRoot
             StreamReader reader = new StreamReader("..\\..\\resources\\livelli.json");
-            LevelsRoot livelli = JsonConvert.DeserializeObject<LevelsRoot>(reader.ReadToEnd());
+            livelli = JsonConvert.DeserializeObject<LevelsRoot>(reader.ReadToEnd());
             campoGioco = new int[livelli.Levels[livello].Matrixr, livelli.Levels[livello].Matrixc];
             lblLivello.Text = livelli.Levels[livello].Name;
 
             muro = Image.FromFile("..\\..\\images\\mattoni.jpg");
             pacco = Image.FromFile("..\\..\\images\\cassa.jpg");
-            magazziniere = Image.FromFile("..\\..\\images\\magazziniere.jpg");
+            magazziniere = Image.FromFile("..\\..\\images\\magazziniere.jpg");            
 
             int cont = 0;
             lstPacchi.Clear();
@@ -69,7 +76,7 @@ namespace Soko_ban
                         pnlCampoGioco.Controls.Add(m.pboxm);
                     }
                     else if (campoGioco[j, i] == 1)
-                    {
+                    {                        
                         PictureBox pbox = new PictureBox();
                         pbox.Image = new Bitmap(muro);
                         pbox.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -77,16 +84,18 @@ namespace Soko_ban
                         pbox.Location = new Point(i * sizePacchi, j * sizePacchi);
                         pbox.Size = new Size(sizePacchi, sizePacchi);
                         pnlCampoGioco.Controls.Add(pbox);
-                    }
+                    } 
                 }
             }
             reader.Close();
+            Reset();
+
             foreach (Pacco p in lstPacchi)
             {
                 p.pboxp.Location = new Point(p.Posy * sizePacchi, p.Posx * sizePacchi);
                 pnlCampoGioco.Controls.Add(p.pboxp);
             }
-        }
+        }     
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -94,21 +103,39 @@ namespace Soko_ban
                 tmrTempo.Enabled = true;
             switch (e.KeyCode)
             {
-                case Keys.Left:
+                case Keys.Left:                    
                     KeyFunc(m.Posx, m.Posy, 0, -1);
-                    Trigger();
+                    if (TriggerZone() == true)
+                    {
+                        
+                    }
                     break;
-                case Keys.Right:
+                case Keys.Right:                    
                     KeyFunc(m.Posx, m.Posy, 0, 1);
-                    Trigger();
+                    if (TriggerZone() == true)
+                    {
+                        livello++;
+                        pnlCampoGioco.Controls.Clear();
+                        Livello_Load(null, EventArgs.Empty);
+                    }
                     break;
-                case Keys.Up:
-                    KeyFunc(m.Posx, m.Posy, -1, 0);
-                    Trigger();
+                case Keys.Up:                    
+                    KeyFunc(m.Posx, m   .Posy, -1, 0);
+                    if (TriggerZone() == true)
+                    {
+                        livello++;
+                        pnlCampoGioco.Controls.Clear();
+                        Livello_Load(null, EventArgs.Empty);
+                    }
                     break;
-                case Keys.Down:
+                case Keys.Down:                    
                     KeyFunc(m.Posx, m.Posy, 1, 0);
-                    Trigger();
+                    if (TriggerZone() == true)
+                    {
+                        livello++;
+                        pnlCampoGioco.Controls.Clear();
+                        Livello_Load(null, EventArgs.Empty);
+                    }
                     break;
             }
         }
@@ -117,7 +144,7 @@ namespace Soko_ban
         {
             if (campoGioco[mx + x, my + y] == 0)
             {
-                campoGioco[mx, my] = 0;
+                campoGioco[mx, my] = 0;                               
                 m.Posy += y;
                 m.Posx += x;
                 m.Mosse++;
@@ -126,7 +153,7 @@ namespace Soko_ban
             {
                 if (campoGioco[mx + (x * 2), my + (y * 2)] == 0)
                 {
-                    campoGioco[mx, my] = 0;
+                    campoGioco[mx, my] = 0;                    
                     campoGioco[mx + (x * 2), my + (y * 2)] = 2;
                     m.Posy += y;
                     m.Posx += x;
@@ -135,7 +162,7 @@ namespace Soko_ban
                     pacco.Posx += x;
                     pacco.Posy += y;
                     m.Spinte++;
-                    m.Mosse++;
+                    m.Mosse++;                    
                 }
             }
             lblMosse.Text = Convert.ToString(m.Mosse);
@@ -148,25 +175,36 @@ namespace Soko_ban
             lblTempo.Text = Convert.ToString(TimeSpan.FromSeconds(tempo));
         }
 
-        public void Trigger()
+        public bool TriggerZone()
         {
-            int count = 1;
+            int nPacchiOK = 0;
 
-            for(int i = 6; i < 8; i++)
+            for(int i = livelli.Levels[livello].TriggerXi; i < livelli.Levels[livello].TriggerXf; i++)
             {
-                for(int j = 17; j < 18; j++)
+                for(int j = livelli.Levels[livello].TriggerYi; j < livelli.Levels[livello].TriggerYf; j++)
                 {
-                    if (campoGioco[i, j] == 2)
-                        count++;
+                    if (campoGioco[j, i] == 2)
+                        nPacchiOK++;
                 }
             }
-           
-            if (count == lstPacchi.Count)
-            {
-                Livello livello = new Livello();
-                livello.livello++;
-                livello.LivShow();
-            }
+          
+            if (nPacchiOK == lstPacchi.Count)
+                return true;
+            else
+                return false;
+        }
+
+        public void Reset()
+        {
+            lblMosse.Text = "0";
+            lblPushes.Text = "0";
+            tmrTempo.Stop();
+            tempo = 0;
+            lblTempo.Text = "00:00:00";            
+
+            livello++;
+            pnlCampoGioco.Controls.Clear();
+            Livello_Load(null, EventArgs.Empty);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Soko_ban
 {
-    partial class Livello
+    partial class frmLivello
     {
         /// <summary>
         /// Variabile di progettazione necessaria.
@@ -128,7 +128,7 @@
             this.tmrTempo.Interval = 1000;
             this.tmrTempo.Tick += new System.EventHandler(this.tmrTempo_Tick);
             // 
-            // Livello
+            // frmLivello
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -138,7 +138,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlCampoGioco);
             this.KeyPreview = true;
-            this.Name = "Livello";
+            this.Name = "frmLivello";
             this.Text = "Livello";
             this.Load += new System.EventHandler(this.Livello_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
