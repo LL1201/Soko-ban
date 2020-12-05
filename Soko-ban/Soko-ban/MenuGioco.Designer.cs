@@ -99,7 +99,7 @@
             this.Controls.Add(this.pcbLogo);
             this.Name = "MenuGioco";
             this.Text = "MENU";
-            this.Load += new System.EventHandler(this.MenuGioco_Load);
+            
             ((System.ComponentModel.ISupportInitialize)(this.pcbLogo)).EndInit();
             this.pnlScelta.ResumeLayout(false);
             this.pnlScelta.PerformLayout();
