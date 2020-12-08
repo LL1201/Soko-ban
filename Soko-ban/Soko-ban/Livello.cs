@@ -192,7 +192,7 @@ namespace Soko_ban
             if (nPacchiOK == lstPacchi.Count)
             {
                 tmrTempo.Stop();
-                pnlRisultato.Visible = true;
+                pnlRisultato.Visible = true;                
                 lblMosseRisultato.Text = Convert.ToString(m.Mosse);
                 lblSpinteRisultato.Text = Convert.ToString(m.Spinte);
                 lblTempoRisultato.Text = Convert.ToString(TimeSpan.FromSeconds(tempo));                
