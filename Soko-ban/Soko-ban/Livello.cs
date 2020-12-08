@@ -56,8 +56,7 @@ namespace Soko_ban
             int cont = 0;
 
             pnlCampoGioco = new Panel();            
-            pnlCampoGioco.Name = "pnlCampoGioco";
-            pnlCampoGioco.TabIndex = 0;
+            pnlCampoGioco.Name = "pnlCampoGioco";            
             Controls.Add(pnlCampoGioco);
             pnlCampoGioco.Visible = true;
             pnlCampoGioco.Location = new Point(12, 12);
@@ -121,20 +120,16 @@ namespace Soko_ban
             switch (e.KeyCode)
             {
                 case Keys.Left:                    
-                    KeyFunc(m.Posx, m.Posy, 0, -1);
-                    //TriggerZone();
+                    KeyFunc(m.Posx, m.Posy, 0, -1);                    
                     break;
                 case Keys.Right:                    
-                    KeyFunc(m.Posx, m.Posy, 0, 1);
-                    //TriggerZone();
+                    KeyFunc(m.Posx, m.Posy, 0, 1);                    
                     break;
                 case Keys.Up:                    
-                    KeyFunc(m.Posx, m   .Posy, -1, 0);
-                    //TriggerZone();
+                    KeyFunc(m.Posx, m.Posy, -1, 0);                    
                     break;
                 case Keys.Down:                    
-                    KeyFunc(m.Posx, m.Posy, 1, 0);
-                    //TriggerZone();
+                    KeyFunc(m.Posx, m.Posy, 1, 0);                    
                     break;
             }
         }
@@ -171,7 +166,10 @@ namespace Soko_ban
         private void btnContinua_Click(object sender, EventArgs e)
         {
             pnlRisultato.Visible = false;
+            pnlCampoGioco.Visible = false;
             pnlCampoGioco.Controls.Clear();
+            Controls.Clear();
+            pnlCampoGioco = null;            
             CaricaLivello(livello + 1);
         }
 
