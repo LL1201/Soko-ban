@@ -24,6 +24,7 @@ namespace Soko_ban
         private Image muro, pacco, magazziniere;        
         private int tempo;
         LevelsRoot livelli;
+        Panel pnlCampoGioco;
 
         public void LivShow()
         {            
@@ -40,8 +41,7 @@ namespace Soko_ban
             //apertura file JSON e assegnazione di tutto il suo contenuto a livelli facente parte della classe LevelsRoot
             StreamReader reader = new StreamReader("..\\..\\resources\\livelli.json");
             livelli = JsonConvert.DeserializeObject<LevelsRoot>(reader.ReadToEnd());
-            campoGioco = new int[livelli.Levels[livello].Matrixr, livelli.Levels[livello].Matrixc];
-            lblLivello.Text = livelli.Levels[livello].Name;
+            campoGioco = new int[livelli.Levels[livello].Matrixr, livelli.Levels[livello].Matrixc];            
 
             muro = Image.FromFile("..\\..\\images\\mattoni.jpg");
             pacco = Image.FromFile("..\\..\\images\\cassa.jpg");
@@ -53,16 +53,21 @@ namespace Soko_ban
 
         public void CaricaLivello(int livello)
         {
-            int cont = 0;            
-            tempo = 0;
+            int cont = 0;
 
-            pnlCampoGioco.Controls.Clear();
+            pnlCampoGioco = new Panel();            
+            pnlCampoGioco.Name = "pnlCampoGioco";
+            pnlCampoGioco.TabIndex = 0;
+            Controls.Add(pnlCampoGioco);
+            pnlCampoGioco.Visible = true;
+            pnlCampoGioco.Location = new Point(12, 12);
+           
             lstPacchi.Clear();
             lblMosse.Text = "0";
-            lblPushes.Text = "0";            
+            lblPushes.Text = "0";
             tempo = 0;
             lblTempo.Text = "00:00:00";
-            tmrTempo.Start();
+            lblLivello.Text = livelli.Levels[livello].Name;            
 
             //cicli necessari per inserire i valori successivi della lista in una matrice ordinata
             do
@@ -129,7 +134,7 @@ namespace Soko_ban
                     break;
                 case Keys.Down:                    
                     KeyFunc(m.Posx, m.Posy, 1, 0);
-                   // TriggerZone();
+                    //TriggerZone();
                     break;
             }
         }
@@ -163,10 +168,11 @@ namespace Soko_ban
             lblPushes.Text = Convert.ToString(m.Spinte);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnContinua_Click(object sender, EventArgs e)
         {
             pnlRisultato.Visible = false;
-            CaricaLivello(livello++);
+            pnlCampoGioco.Controls.Clear();
+            CaricaLivello(livello + 1);
         }
 
         private void tmrTempo_Tick(object sender, EventArgs e)
@@ -178,7 +184,7 @@ namespace Soko_ban
 
         public void TriggerZone()
         {
-            int nPacchiOK = 0;
+            int nPacchiOK = 6;
 
             for(int i = livelli.Levels[livello].TriggerXi; i < livelli.Levels[livello].TriggerXf; i++)
             {
@@ -192,7 +198,7 @@ namespace Soko_ban
             if (nPacchiOK == lstPacchi.Count)
             {
                 tmrTempo.Stop();
-                pnlRisultato.Visible = true;                
+                pnlRisultato.Visible = true;              
                 lblMosseRisultato.Text = Convert.ToString(m.Mosse);
                 lblSpinteRisultato.Text = Convert.ToString(m.Spinte);
                 lblTempoRisultato.Text = Convert.ToString(TimeSpan.FromSeconds(tempo));                
