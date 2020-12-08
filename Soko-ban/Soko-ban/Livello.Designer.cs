@@ -46,11 +46,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblLivello = new System.Windows.Forms.Label();
             this.tmrTempo = new System.Windows.Forms.Timer(this.components);
-            this.dataGrid = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnlCampoGioco.SuspendLayout();
             this.pnlRisultato.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlCampoGioco
@@ -63,7 +62,7 @@
             // 
             // pnlRisultato
             // 
-            this.pnlRisultato.Controls.Add(this.dataGrid);
+            this.pnlRisultato.Controls.Add(this.button1);
             this.pnlRisultato.Controls.Add(this.lblTempoRisultato);
             this.pnlRisultato.Controls.Add(this.lblSpinteRisultato);
             this.pnlRisultato.Controls.Add(this.lblMosseRisultato);
@@ -82,7 +81,7 @@
             // 
             this.lblTempoRisultato.AutoSize = true;
             this.lblTempoRisultato.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTempoRisultato.Location = new System.Drawing.Point(294, 217);
+            this.lblTempoRisultato.Location = new System.Drawing.Point(404, 243);
             this.lblTempoRisultato.Name = "lblTempoRisultato";
             this.lblTempoRisultato.Size = new System.Drawing.Size(79, 29);
             this.lblTempoRisultato.TabIndex = 6;
@@ -92,7 +91,7 @@
             // 
             this.lblSpinteRisultato.AutoSize = true;
             this.lblSpinteRisultato.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSpinteRisultato.Location = new System.Drawing.Point(294, 170);
+            this.lblSpinteRisultato.Location = new System.Drawing.Point(404, 196);
             this.lblSpinteRisultato.Name = "lblSpinteRisultato";
             this.lblSpinteRisultato.Size = new System.Drawing.Size(79, 29);
             this.lblSpinteRisultato.TabIndex = 5;
@@ -102,7 +101,7 @@
             // 
             this.lblMosseRisultato.AutoSize = true;
             this.lblMosseRisultato.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMosseRisultato.Location = new System.Drawing.Point(294, 126);
+            this.lblMosseRisultato.Location = new System.Drawing.Point(404, 152);
             this.lblMosseRisultato.Name = "lblMosseRisultato";
             this.lblMosseRisultato.Size = new System.Drawing.Size(79, 29);
             this.lblMosseRisultato.TabIndex = 4;
@@ -112,7 +111,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(50, 217);
+            this.label6.Location = new System.Drawing.Point(160, 243);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(210, 29);
             this.label6.TabIndex = 3;
@@ -122,7 +121,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(50, 170);
+            this.label5.Location = new System.Drawing.Point(160, 196);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(94, 29);
             this.label5.TabIndex = 2;
@@ -132,7 +131,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(50, 126);
+            this.label3.Location = new System.Drawing.Point(160, 152);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(97, 29);
             this.label3.TabIndex = 1;
@@ -141,10 +140,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Location = new System.Drawing.Point(163, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(388, 73);
             this.label1.TabIndex = 0;
@@ -230,13 +228,16 @@
             this.tmrTempo.Interval = 1000;
             this.tmrTempo.Tick += new System.EventHandler(this.tmrTempo_Tick);
             // 
-            // dataGrid
+            // button1
             // 
-            this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid.Location = new System.Drawing.Point(420, 141);
-            this.dataGrid.Name = "dataGrid";
-            this.dataGrid.Size = new System.Drawing.Size(240, 150);
-            this.dataGrid.TabIndex = 7;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(225, 319);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(280, 69);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "CONTINUA";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmLivello
             // 
@@ -257,7 +258,6 @@
             this.pnlRisultato.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -281,7 +281,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGrid;
+        private System.Windows.Forms.Button button1;
     }
 }
 
