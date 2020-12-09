@@ -51,16 +51,16 @@ namespace Soko_ban
             CaricaLivello(livello);
         }     
 
-        public void CaricaLivello(int livello)
+        private void CaricaLivello(int livello)
         {
             int cont = 0;
 
-            pnlCampoGioco = new Panel();            
-            pnlCampoGioco.Name = "pnlCampoGioco";            
+            //generazione nuovo pannello
+            pnlCampoGioco = new Panel();
             Controls.Add(pnlCampoGioco);
-            pnlCampoGioco.Visible = true;
-            pnlCampoGioco.Location = new Point(12, 12);
+            pnlCampoGioco.Visible = true;            
            
+            //pulizia label punti e tempo
             lstPacchi.Clear();
             lblMosse.Text = "0";
             lblPushes.Text = "0";
@@ -87,8 +87,8 @@ namespace Soko_ban
             {
                 for (int j = 0; j < campoGioco.GetLength(0); j++)
                 {
-                    if (campoGioco[j, i] == 2)
-                        lstPacchi.Add(new Pacco(j, i, sizePacchi, pacco));
+                    if (campoGioco[j, i] == 2)                    
+                        lstPacchi.Add(new Pacco(j, i, sizePacchi, pacco));                                           
                     else if (campoGioco[j, i] == 3)
                     {
                         m = new Magazziniere(j, i, sizePacchi, magazziniere);
@@ -107,12 +107,14 @@ namespace Soko_ban
                 }
             }
 
-            foreach (Pacco p in lstPacchi)
+            foreach (Pacco p in lstPacchi) //aggiunta al pannello dei pacchi generati
             {
                 p.pboxp.Location = new Point(p.Posy * sizePacchi, p.Posx * sizePacchi);
                 pnlCampoGioco.Controls.Add(p.pboxp);
             }
         }
+
+        #region Gestione tasti e gestione della triggerzone
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (tmrTempo.Enabled == false)
@@ -134,7 +136,7 @@ namespace Soko_ban
             }
         }
 
-        public void KeyFunc(int mx, int my, int x, int y)
+        private void KeyFunc(int mx, int my, int x, int y)
         {
             if (campoGioco[mx + x, my + y] == 0)
             {
@@ -163,6 +165,35 @@ namespace Soko_ban
             lblPushes.Text = Convert.ToString(m.Spinte);
         }
 
+        private void TriggerZone()
+        {
+            int nPacchiOK = 0;
+
+            for (int i = livelli.Levels[livello].TriggerXi; i < livelli.Levels[livello].TriggerXf; i++)
+            {
+                for (int j = livelli.Levels[livello].TriggerYi; j < livelli.Levels[livello].TriggerYf; j++)
+                {
+                    if (campoGioco[j, i] == 2)
+                        nPacchiOK++;
+                }
+            }
+
+            if (nPacchiOK == lstPacchi.Count)
+            {
+                tmrTempo.Stop();
+                pnlRisultato.Visible = true;
+                lblMosseRisultato.Text = Convert.ToString(m.Mosse);
+                lblSpinteRisultato.Text = Convert.ToString(m.Spinte);
+                lblTempoRisultato.Text = Convert.ToString(TimeSpan.FromSeconds(tempo));
+            }
+        }
+        #endregion        
+
+        private void frmLivello_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
+
         private void btnContinua_Click(object sender, EventArgs e)
         {
             pnlRisultato.Visible = false;
@@ -178,29 +209,6 @@ namespace Soko_ban
             tempo++;
             lblTempo.Text = Convert.ToString(TimeSpan.FromSeconds(tempo));
             TriggerZone();
-        }        
-
-        public void TriggerZone()
-        {
-            int nPacchiOK = 6;
-
-            for(int i = livelli.Levels[livello].TriggerXi; i < livelli.Levels[livello].TriggerXf; i++)
-            {
-                for(int j = livelli.Levels[livello].TriggerYi; j < livelli.Levels[livello].TriggerYf; j++)
-                {
-                    if (campoGioco[j, i] == 2)
-                        nPacchiOK++;
-                }
-            }
-
-            if (nPacchiOK == lstPacchi.Count)
-            {
-                tmrTempo.Stop();
-                pnlRisultato.Visible = true;              
-                lblMosseRisultato.Text = Convert.ToString(m.Mosse);
-                lblSpinteRisultato.Text = Convert.ToString(m.Spinte);
-                lblTempoRisultato.Text = Convert.ToString(TimeSpan.FromSeconds(tempo));                
-            } 
-        }        
+        }
     }
 }

@@ -21,6 +21,7 @@ namespace Soko_ban
             position.Y = y;
             mosse = spinte = 0;
 
+            //picture box associata al pacco
             pboxm = new PictureBox();
             pboxm.Image = new Bitmap(image);
             pboxm.SizeMode = PictureBoxSizeMode.StretchImage;

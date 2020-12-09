@@ -5,7 +5,7 @@
         "nPacchi": 6,
         "Matrixc": 19,
         "Matrixr": 11,
-		"TriggerXi": 16,
+	    "TriggerXi": 16,
 		"TriggerYi": 6,
 		"TriggerXf": 18,
 		"TriggerYf": 9,
@@ -28,8 +28,10 @@
         "nPacchi": 10,
         "Matrixc": 14,
         "Matrixr": 10,
-        "Matrixpr": 5,
-        "Matrixpc": 2,
+        "TriggerXi": 1,
+		"TriggerYi": 1,
+		"TriggerXf": 3,
+		"TriggerYf": 6,
         "Matrix": [ 
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0,
             1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1,
@@ -41,14 +43,7 @@
             0, 0, 1, 0, 2, 0, 0, 2, 0, 2, 0, 2, 0, 1,
             0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1,
             0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-        ],
-      "Matrixp": [
-             -1, -1,
-             -1, -1,
-             -1, -1,
-             -1, -1,
-             -1, -1
-      ]
+        ],      
     }
   ]   
 }

@@ -18,6 +18,7 @@ namespace Soko_ban
             position.X = x;
             position.Y = y;
 
+            //picture box relativa al pacco
             pboxp = new PictureBox();
             pboxp.Image = new Bitmap(image);
             pboxp.SizeMode = PictureBoxSizeMode.StretchImage;
