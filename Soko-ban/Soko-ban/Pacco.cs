@@ -25,7 +25,7 @@ namespace Soko_ban
             pboxp.Visible = true;
             pboxp.Location = new Point(y * sizePacchi, x * sizePacchi);
             pboxp.Size = new Size(sizePacchi, sizePacchi);
-            this.sizePacchi = sizePacchi;
+            this.sizePacchi = sizePacchi;            
         }
 
         public int Posx

@@ -58,7 +58,7 @@ namespace Soko_ban
             //generazione nuovo pannello
             pnlCampoGioco = new Panel();
             Controls.Add(pnlCampoGioco);
-            pnlCampoGioco.Visible = true;            
+            pnlCampoGioco.Visible = true;
            
             //pulizia label punti e tempo
             lstPacchi.Clear();
@@ -66,7 +66,8 @@ namespace Soko_ban
             lblPushes.Text = "0";
             tempo = 0;
             lblTempo.Text = "00:00:00";
-            lblLivello.Text = livelli.Levels[livello].Name;            
+            lblLivello.Text = livelli.Levels[livello].Name;
+            tmrTempo.Start();
 
             //cicli necessari per inserire i valori successivi della lista in una matrice ordinata
             do
@@ -107,6 +108,8 @@ namespace Soko_ban
                 }
             }
 
+            pnlCampoGioco.Visible = true;
+           
             foreach (Pacco p in lstPacchi) //aggiunta al pannello dei pacchi generati
             {
                 p.pboxp.Location = new Point(p.Posy * sizePacchi, p.Posx * sizePacchi);
@@ -116,9 +119,7 @@ namespace Soko_ban
 
         #region Gestione tasti e gestione della triggerzone
         private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (tmrTempo.Enabled == false)
-                tmrTempo.Enabled = true;
+        {           
             switch (e.KeyCode)
             {
                 case Keys.Left:                    
@@ -167,7 +168,7 @@ namespace Soko_ban
 
         private void TriggerZone()
         {
-            int nPacchiOK = 0;
+            int nPacchiOK = 6;
 
             for (int i = livelli.Levels[livello].TriggerXi; i < livelli.Levels[livello].TriggerXf; i++)
             {
@@ -196,10 +197,9 @@ namespace Soko_ban
 
         private void btnContinua_Click(object sender, EventArgs e)
         {
-            pnlRisultato.Visible = false;
-            pnlCampoGioco.Visible = false;
-            pnlCampoGioco.Controls.Clear();
-            Controls.Clear();
+            pnlRisultato.Visible = false;            
+            //pnlCampoGioco.Controls.Clear();
+            //Controls.Clear();
             pnlCampoGioco = null;            
             CaricaLivello(livello + 1);
         }
