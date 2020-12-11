@@ -28,7 +28,7 @@ namespace Soko_ban
 
         public void LivShow()
         {            
-            this.Show();
+            Show();
         }
 
         public frmLivello()
@@ -60,7 +60,7 @@ namespace Soko_ban
             pnlCampoGioco = new Panel();
             Controls.Add(pnlCampoGioco);
             pnlCampoGioco.Visible = true;            
-           
+            
             //pulizia label punti e tempo
             lstPacchi.Clear();
             lblMosse.Text = "0";
