@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.IO;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using System.Xml;
 using Newtonsoft.Json;
 
 namespace Soko_ban
@@ -34,8 +40,7 @@ namespace Soko_ban
         {            
             //apertura file JSON e assegnazione di tutto il suo contenuto a livelli facente parte della classe LevelsRoot
             StreamReader reader = new StreamReader("..\\..\\resources\\livelli.json");
-            livelli = JsonConvert.DeserializeObject<LevelsRoot>(reader.ReadToEnd());
-            campoGioco = new int[livelli.Levels[livello].Matrixr, livelli.Levels[livello].Matrixc];            
+            livelli = JsonConvert.DeserializeObject<LevelsRoot>(reader.ReadToEnd());                        
 
             muro = Image.FromFile("..\\..\\images\\mattoni.jpg");
             pacco = Image.FromFile("..\\..\\images\\cassa.jpg");
@@ -48,11 +53,13 @@ namespace Soko_ban
         private void CaricaLivello(int livello)
         {
             int cont = 0;
+            this.livello = livello;
+            campoGioco = new int[livelli.Levels[livello].Matrixr, livelli.Levels[livello].Matrixc];
 
             //generazione nuovo pannello
             pnlCampoGioco = new Panel();
             Controls.Add(pnlCampoGioco);
-            pnlCampoGioco.Visible = true;
+            pnlCampoGioco.Visible = true;            
            
             //pulizia label punti e tempo
             lstPacchi.Clear();
@@ -60,8 +67,7 @@ namespace Soko_ban
             lblPushes.Text = "0";
             tempo = 0;
             lblTempo.Text = "00:00:00";
-            lblLivello.Text = livelli.Levels[livello].Name;
-            tmrTempo.Start();
+            lblLivello.Text = livelli.Levels[livello].Name;            
 
             //cicli necessari per inserire i valori successivi della lista in una matrice ordinata
             do
@@ -102,8 +108,6 @@ namespace Soko_ban
                 }
             }
 
-            pnlCampoGioco.Visible = true;
-           
             foreach (Pacco p in lstPacchi) //aggiunta al pannello dei pacchi generati
             {
                 p.pboxp.Location = new Point(p.Posy * sizePacchi, p.Posx * sizePacchi);
@@ -113,7 +117,9 @@ namespace Soko_ban
 
         #region Gestione tasti e gestione della triggerzone
         private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {           
+        {
+            if (tmrTempo.Enabled == false)
+                tmrTempo.Enabled = true;
             switch (e.KeyCode)
             {
                 case Keys.Left:                    
@@ -191,10 +197,11 @@ namespace Soko_ban
 
         private void btnContinua_Click(object sender, EventArgs e)
         {
-            pnlRisultato.Visible = false;            
-            //pnlCampoGioco.Controls.Clear();
+            pnlRisultato.Visible = false;
+            pnlCampoGioco.Visible = false;
+            pnlCampoGioco.Controls.Clear();
             //Controls.Clear();
-            pnlCampoGioco = null;            
+            //pnlCampoGioco = null;            
             CaricaLivello(livello + 1);
         }
 
