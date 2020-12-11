@@ -231,6 +231,7 @@
             // 
             // frmLivello
             // 
+            this.AcceptButton = this.btnContinua;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
@@ -241,7 +242,6 @@
             this.KeyPreview = true;
             this.Name = "frmLivello";
             this.Text = "Livello";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLivello_FormClosing);
             this.Load += new System.EventHandler(this.Livello_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.panel1.ResumeLayout(false);

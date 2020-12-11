@@ -188,12 +188,7 @@ namespace Soko_ban
                 lblTempoRisultato.Text = Convert.ToString(TimeSpan.FromSeconds(tempo));
             }
         }
-        #endregion        
-
-        private void frmLivello_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            
-        }
+        #endregion                
 
         private void btnContinua_Click(object sender, EventArgs e)
         {
