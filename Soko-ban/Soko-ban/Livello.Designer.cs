@@ -39,15 +39,17 @@
             this.tmrTempo = new System.Windows.Forms.Timer(this.components);
             this.pnlRisultato = new System.Windows.Forms.Panel();
             this.btnContinua = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblTempoRisultato = new System.Windows.Forms.Label();
             this.lblSpinteRisultato = new System.Windows.Forms.Label();
             this.lblMosseRisultato = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.pnlRisultato.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -132,15 +134,12 @@
             // 
             // pnlRisultato
             // 
+            this.pnlRisultato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pnlRisultato.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.pnlRisultato.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlRisultato.Controls.Add(this.groupBox1);
             this.pnlRisultato.Controls.Add(this.btnContinua);
-            this.pnlRisultato.Controls.Add(this.lblTempoRisultato);
-            this.pnlRisultato.Controls.Add(this.lblSpinteRisultato);
-            this.pnlRisultato.Controls.Add(this.lblMosseRisultato);
-            this.pnlRisultato.Controls.Add(this.label6);
-            this.pnlRisultato.Controls.Add(this.label5);
-            this.pnlRisultato.Controls.Add(this.label3);
             this.pnlRisultato.Controls.Add(this.label1);
-            this.pnlRisultato.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlRisultato.Location = new System.Drawing.Point(0, 0);
             this.pnlRisultato.Name = "pnlRisultato";
             this.pnlRisultato.Size = new System.Drawing.Size(793, 437);
@@ -158,76 +157,92 @@
             this.btnContinua.UseVisualStyleBackColor = true;
             this.btnContinua.Click += new System.EventHandler(this.btnContinua_Click);
             // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(150, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(388, 73);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "HAI VINTO!!";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblTempoRisultato);
+            this.groupBox1.Controls.Add(this.lblSpinteRisultato);
+            this.groupBox1.Controls.Add(this.lblMosseRisultato);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Location = new System.Drawing.Point(163, 104);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(389, 209);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Statistiche";
+            // 
             // lblTempoRisultato
             // 
             this.lblTempoRisultato.AutoSize = true;
             this.lblTempoRisultato.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTempoRisultato.Location = new System.Drawing.Point(404, 243);
+            this.lblTempoRisultato.Location = new System.Drawing.Point(277, 144);
             this.lblTempoRisultato.Name = "lblTempoRisultato";
             this.lblTempoRisultato.Size = new System.Drawing.Size(79, 29);
-            this.lblTempoRisultato.TabIndex = 6;
+            this.lblTempoRisultato.TabIndex = 12;
             this.lblTempoRisultato.Text = "label9";
             // 
             // lblSpinteRisultato
             // 
             this.lblSpinteRisultato.AutoSize = true;
             this.lblSpinteRisultato.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSpinteRisultato.Location = new System.Drawing.Point(404, 196);
+            this.lblSpinteRisultato.Location = new System.Drawing.Point(277, 88);
             this.lblSpinteRisultato.Name = "lblSpinteRisultato";
             this.lblSpinteRisultato.Size = new System.Drawing.Size(79, 29);
-            this.lblSpinteRisultato.TabIndex = 5;
+            this.lblSpinteRisultato.TabIndex = 11;
             this.lblSpinteRisultato.Text = "label8";
             // 
             // lblMosseRisultato
             // 
             this.lblMosseRisultato.AutoSize = true;
             this.lblMosseRisultato.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMosseRisultato.Location = new System.Drawing.Point(404, 152);
+            this.lblMosseRisultato.Location = new System.Drawing.Point(277, 33);
             this.lblMosseRisultato.Name = "lblMosseRisultato";
             this.lblMosseRisultato.Size = new System.Drawing.Size(79, 29);
-            this.lblMosseRisultato.TabIndex = 4;
+            this.lblMosseRisultato.TabIndex = 10;
             this.lblMosseRisultato.Text = "label7";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(160, 243);
+            this.label6.Location = new System.Drawing.Point(33, 144);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(210, 29);
-            this.label6.TabIndex = 3;
+            this.label6.TabIndex = 9;
             this.label6.Text = "Tempo impiegato:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(160, 196);
+            this.label5.Location = new System.Drawing.Point(33, 88);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(94, 29);
-            this.label5.TabIndex = 2;
+            this.label5.TabIndex = 8;
             this.label5.Text = "Spinte: ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(160, 152);
+            this.label3.Location = new System.Drawing.Point(33, 33);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(97, 29);
-            this.label3.TabIndex = 1;
+            this.label3.TabIndex = 7;
             this.label3.Text = "Mosse: ";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(163, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(388, 73);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "HAI VINTO!!";
             // 
             // frmLivello
             // 
@@ -248,6 +263,8 @@
             this.panel1.PerformLayout();
             this.pnlRisultato.ResumeLayout(false);
             this.pnlRisultato.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -263,13 +280,14 @@
         private System.Windows.Forms.Label lblLivello;
         private System.Windows.Forms.Panel pnlRisultato;
         private System.Windows.Forms.Button btnContinua;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblTempoRisultato;
         private System.Windows.Forms.Label lblSpinteRisultato;
         private System.Windows.Forms.Label lblMosseRisultato;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
     }
 }
 
