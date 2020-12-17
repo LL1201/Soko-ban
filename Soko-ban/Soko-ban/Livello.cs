@@ -59,7 +59,7 @@ namespace Soko_ban
             lblMosse.Text = "0";
             lblPushes.Text = "0";
             tempo = 0;
-            lblTempo.Text = "00:00:00";
+            barrasotto.Text = "00:00:00";
             lblLivello.Text = livelli.Levels[livello].Name;            
 
             //cicli necessari per inserire i valori successivi della lista in una matrice ordinata
@@ -181,7 +181,7 @@ namespace Soko_ban
                 lblTempoRisultato.Text = Convert.ToString(TimeSpan.FromSeconds(tempo));
             }
         }
-        #endregion                      
+        #endregion  
 
         private void btnContinua_Click(object sender, EventArgs e)
         {
