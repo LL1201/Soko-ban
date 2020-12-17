@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tmrTempo = new System.Windows.Forms.Timer(this.components);
             this.pnlRisultato = new System.Windows.Forms.Panel();
+            this.btnReload = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblTempoRisultato = new System.Windows.Forms.Label();
             this.lblSpinteRisultato = new System.Windows.Forms.Label();
@@ -48,6 +49,7 @@
             this.lblPushes = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblTempo = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusBar = new System.Windows.Forms.ToolStripProgressBar();
             this.pnlRisultato.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.barrasotto.SuspendLayout();
@@ -63,15 +65,25 @@
             this.pnlRisultato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.pnlRisultato.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.pnlRisultato.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlRisultato.Controls.Add(this.btnReload);
             this.pnlRisultato.Controls.Add(this.groupBox1);
             this.pnlRisultato.Controls.Add(this.btnContinua);
             this.pnlRisultato.Controls.Add(this.label1);
-            this.pnlRisultato.Location = new System.Drawing.Point(335, 0);
+            this.pnlRisultato.Location = new System.Drawing.Point(121, 13);
             this.pnlRisultato.Margin = new System.Windows.Forms.Padding(4);
             this.pnlRisultato.Name = "pnlRisultato";
-            this.pnlRisultato.Size = new System.Drawing.Size(1650, 799);
+            this.pnlRisultato.Size = new System.Drawing.Size(1168, 686);
             this.pnlRisultato.TabIndex = 1;
             this.pnlRisultato.Visible = false;
+            // 
+            // btnReload
+            // 
+            this.btnReload.Location = new System.Drawing.Point(1152, 580);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(107, 42);
+            this.btnReload.TabIndex = 3;
+            this.btnReload.Text = "Riprova";
+            this.btnReload.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -174,7 +186,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(497, 26);
+            this.label1.Location = new System.Drawing.Point(256, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(481, 91);
@@ -191,7 +203,8 @@
             this.toolStripStatusLabel3,
             this.lblPushes,
             this.toolStripStatusLabel4,
-            this.lblTempo});
+            this.lblTempo,
+            this.statusBar});
             this.barrasotto.Location = new System.Drawing.Point(0, 577);
             this.barrasotto.Name = "barrasotto";
             this.barrasotto.Size = new System.Drawing.Size(1596, 47);
@@ -247,6 +260,11 @@
             this.lblTempo.Size = new System.Drawing.Size(128, 41);
             this.lblTempo.Text = "00:00:00";
             // 
+            // statusBar
+            // 
+            this.statusBar.Name = "statusBar";
+            this.statusBar.Size = new System.Drawing.Size(100, 39);
+            // 
             // frmLivello
             // 
             this.AcceptButton = this.btnContinua;
@@ -294,6 +312,8 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        private System.Windows.Forms.ToolStripProgressBar statusBar;
+        private System.Windows.Forms.Button btnReload;
     }
 }
 

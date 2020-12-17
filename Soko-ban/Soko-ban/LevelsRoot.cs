@@ -15,7 +15,8 @@ namespace Soko_ban
         public int TriggerXi;
         public int TriggerXf;
         public int TriggerYi;
-        public int TriggerYf;        
+        public int TriggerYf;
+        public int inc;
         public IList<int> Matrix;
     }
     class LevelsRoot

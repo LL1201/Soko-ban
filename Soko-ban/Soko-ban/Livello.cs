@@ -52,8 +52,9 @@ namespace Soko_ban
             //generazione nuovo pannello
             pnlCampoGioco = new Panel();
             Controls.Add(pnlCampoGioco);
-            pnlCampoGioco.Visible = true;            
-            
+            pnlCampoGioco.Visible = true;
+            statusBar.Value = 0;
+
             //pulizia label punti e tempo
             lstPacchi.Clear();
             lblMosse.Text = "0";
@@ -162,6 +163,7 @@ namespace Soko_ban
         private void TriggerZone()
         {
             int nPacchiOK = 0;
+            int inc = 0;
 
             for (int i = livelli.Levels[livello].TriggerXi; i < livelli.Levels[livello].TriggerXf; i++)
             {
@@ -180,6 +182,9 @@ namespace Soko_ban
                 lblSpinteRisultato.Text = Convert.ToString(m.Spinte);
                 lblTempoRisultato.Text = Convert.ToString(TimeSpan.FromSeconds(tempo));
             }
+
+            inc = (nPacchiOK*100) / livelli.Levels[livello].nPacchi;
+            statusBar.Value = inc;
         }
         #endregion  
 
@@ -197,7 +202,7 @@ namespace Soko_ban
         {
             tempo++;
             lblTempo.Text = Convert.ToString(TimeSpan.FromSeconds(tempo));
-            TriggerZone();
+            TriggerZone();                      
         }
     }
 }
