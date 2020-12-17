@@ -35,6 +35,7 @@
             this.pcbLogo = new System.Windows.Forms.PictureBox();
             this.pnlScelta = new System.Windows.Forms.Panel();
             this.btnLiv3 = new System.Windows.Forms.Button();
+            this.btnLiv4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pcbLogo)).BeginInit();
             this.pnlScelta.SuspendLayout();
             this.SuspendLayout();
@@ -48,7 +49,7 @@
             this.btnLiv1.TabIndex = 2;
             this.btnLiv1.Text = "Livello 1";
             this.btnLiv1.UseVisualStyleBackColor = true;
-            this.btnLiv1.Click += new System.EventHandler(this.btnLiv1_Click);
+            this.btnLiv1.Click += new System.EventHandler(this.btnLiv_Click);
             // 
             // btnLiv2
             // 
@@ -59,7 +60,7 @@
             this.btnLiv2.TabIndex = 3;
             this.btnLiv2.Text = "Livello 2";
             this.btnLiv2.UseVisualStyleBackColor = true;
-            this.btnLiv2.Click += new System.EventHandler(this.btnLiv2_Click);
+            this.btnLiv2.Click += new System.EventHandler(this.btnLiv_Click);
             // 
             // lblSceltaLivello
             // 
@@ -86,6 +87,7 @@
             // 
             // pnlScelta
             // 
+            this.pnlScelta.Controls.Add(this.btnLiv4);
             this.pnlScelta.Controls.Add(this.btnLiv3);
             this.pnlScelta.Controls.Add(this.lblSceltaLivello);
             this.pnlScelta.Controls.Add(this.btnLiv1);
@@ -106,7 +108,18 @@
             this.btnLiv3.TabIndex = 6;
             this.btnLiv3.Text = "Livello 3";
             this.btnLiv3.UseVisualStyleBackColor = true;
-            this.btnLiv3.Click += new System.EventHandler(this.btnLiv3_Click);
+            this.btnLiv3.Click += new System.EventHandler(this.btnLiv_Click);
+            // 
+            // btnLiv4
+            // 
+            this.btnLiv4.Location = new System.Drawing.Point(491, 25);
+            this.btnLiv4.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLiv4.Name = "btnLiv4";
+            this.btnLiv4.Size = new System.Drawing.Size(100, 28);
+            this.btnLiv4.TabIndex = 7;
+            this.btnLiv4.Text = "Livello 4";
+            this.btnLiv4.UseVisualStyleBackColor = true;
+            this.btnLiv4.Click += new System.EventHandler(this.btnLiv_Click);
             // 
             // MenuGioco
             // 
@@ -132,5 +145,6 @@
         private System.Windows.Forms.PictureBox pcbLogo;
         private System.Windows.Forms.Panel pnlScelta;
         private System.Windows.Forms.Button btnLiv3;
+        private System.Windows.Forms.Button btnLiv4;
     }
 }

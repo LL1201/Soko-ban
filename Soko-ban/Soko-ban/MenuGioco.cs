@@ -15,27 +15,30 @@ namespace Soko_ban
         public MenuGioco()
         {
             InitializeComponent();
-        }
+        }        
 
-        private void btnLiv1_Click(object sender, EventArgs e)
+        private void btnLiv_Click(object sender, EventArgs e)
         {
             frmLivello livello1 = new frmLivello();
-            livello1.livello = 0;
-            livello1.LivShow();
-        }
-
-        private void btnLiv2_Click(object sender, EventArgs e)
-        {
-            frmLivello livello1 = new frmLivello();
-            livello1.livello = 1;
-            livello1.LivShow();
-        }
-
-        private void btnLiv3_Click(object sender, EventArgs e)
-        {
-            frmLivello livello1 = new frmLivello();
-            livello1.livello = 2;
-            livello1.LivShow();
+            switch (((Button)sender).Name)
+            {
+                case "btnLiv1":                    
+                    livello1.livello = 0;
+                    livello1.LivShow();
+                    break;
+                case "btnLiv2":                    
+                    livello1.livello = 1;
+                    livello1.LivShow();
+                    break;
+                case "btnLiv3":
+                    livello1.livello = 2;
+                    livello1.LivShow();
+                    break;
+                case "btnLiv4":
+                    livello1.livello = 3;
+                    livello1.LivShow();
+                    break;
+            }
         }
     }
 }
