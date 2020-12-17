@@ -14,7 +14,7 @@ namespace Soko_ban
         private List<Pacco> lstPacchi = new List<Pacco>();
         private Magazziniere m;
         public int livello;
-        private Image muro, pacco, magazziniere;        
+        private Image muro, pacco, magazziniere, trigger;        
         private int tempo;
         LevelsRoot livelli;
         Panel pnlCampoGioco;
@@ -38,6 +38,7 @@ namespace Soko_ban
             muro = Image.FromFile("..\\..\\images\\mattoni.jpg");
             pacco = Image.FromFile("..\\..\\images\\cassa.jpg");
             magazziniere = Image.FromFile("..\\..\\images\\magazziniere.jpg");
+            trigger = Image.FromFile("..\\..\\images\\trigger.jpg");
 
             reader.Close();
             CaricaLivello(livello);
@@ -93,6 +94,16 @@ namespace Soko_ban
                     {
                         PictureBox pbox = new PictureBox();
                         pbox.Image = new Bitmap(muro);
+                        pbox.SizeMode = PictureBoxSizeMode.StretchImage;
+                        pbox.Visible = true;
+                        pbox.Location = new Point(i * sizePacchi, j * sizePacchi);
+                        pbox.Size = new Size(sizePacchi, sizePacchi);
+                        pnlCampoGioco.Controls.Add(pbox);
+                    }
+                    else if (campoGioco[j, i] == -1)
+                    {
+                        PictureBox pbox = new PictureBox();
+                        pbox.Image = new Bitmap(trigger);
                         pbox.SizeMode = PictureBoxSizeMode.StretchImage;
                         pbox.Visible = true;
                         pbox.Location = new Point(i * sizePacchi, j * sizePacchi);
