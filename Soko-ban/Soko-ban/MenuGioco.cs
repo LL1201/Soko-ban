@@ -30,5 +30,12 @@ namespace Soko_ban
             livello1.livello = 1;
             livello1.LivShow();
         }
+
+        private void btnLiv3_Click(object sender, EventArgs e)
+        {
+            frmLivello livello1 = new frmLivello();
+            livello1.livello = 2;
+            livello1.LivShow();
+        }
     }
 }

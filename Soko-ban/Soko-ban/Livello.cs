@@ -1,15 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.IO;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using System.Xml;
 using Newtonsoft.Json;
 
 namespace Soko_ban
@@ -168,7 +161,7 @@ namespace Soko_ban
 
         private void TriggerZone()
         {
-            int nPacchiOK = 6;
+            int nPacchiOK = 0;
 
             for (int i = livelli.Levels[livello].TriggerXi; i < livelli.Levels[livello].TriggerXf; i++)
             {
