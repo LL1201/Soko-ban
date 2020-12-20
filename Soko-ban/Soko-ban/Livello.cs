@@ -144,7 +144,7 @@ namespace Soko_ban
 
         private void KeyFunc(int mx, int my, int x, int y)
         {
-            if (campoGioco[mx + x, my + y] == 0)
+            if (campoGioco[mx + x, my + y] == 0 || campoGioco[mx + x, my + y] == -1)
             {
                 campoGioco[mx, my] = 0;                               
                 m.Posy += y;
@@ -153,7 +153,7 @@ namespace Soko_ban
             }
             else if (campoGioco[mx + x, my + y] == 2)
             {
-                if (campoGioco[mx + (x * 2), my + (y * 2)] == 0)
+                if (campoGioco[mx + (x * 2), my + (y * 2)] == 0 || campoGioco[mx + (x * 2), my + (y * 2)] == -1)
                 {
                     campoGioco[mx, my] = 0;                    
                     campoGioco[mx + (x * 2), my + (y * 2)] = 2;
