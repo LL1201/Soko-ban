@@ -38,7 +38,7 @@ namespace Soko_ban
             muro = Image.FromFile("..\\..\\images\\mattoni.jpg");
             pacco = Image.FromFile("..\\..\\images\\cassa.jpg");
             magazziniere = Image.FromFile("..\\..\\images\\magazziniere.jpg");
-            trigger = Image.FromFile("..\\..\\images\\trigger.jpg");
+            trigger = Image.FromFile("..\\..\\images\\trigger.png");
 
             reader.Close();
             CaricaLivello(livello);
