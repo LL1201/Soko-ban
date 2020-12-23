@@ -38,7 +38,7 @@ namespace Soko_ban
             muro = Image.FromFile("..\\..\\images\\mattoni.jpg");
             pacco = Image.FromFile("..\\..\\images\\cassa.jpg");
             magazziniere = Image.FromFile("..\\..\\images\\magazziniere.jpg");
-            trigger = Image.FromFile("..\\..\\images\\trigger.png");
+            trigger = Image.FromFile("..\\..\\images\\trigger.png");            
 
             reader.Close();
             CaricaLivello(livello);
@@ -77,18 +77,36 @@ namespace Soko_ban
                 }
             } while (cont < livelli.Levels[livello].Matrixr * livelli.Levels[livello].Matrixc);
             pnlCampoGioco.Size = new Size(campoGioco.GetLength(1) * sizePacchi, (campoGioco.GetLength(0) * sizePacchi) + 48);
-            
+
             //scansione matrice per verificare la presenza di muri e pacchi e quindi per la loro istanziazione e disegno
             for (int i = 0; i < campoGioco.GetLength(1); i++)
             {
                 for (int j = 0; j < campoGioco.GetLength(0); j++)
                 {
-                    if (campoGioco[j, i] == 2)                    
-                        lstPacchi.Add(new Pacco(j, i, sizePacchi, pacco));                                           
-                    else if (campoGioco[j, i] == 3)
+                    if (campoGioco[j, i] == 3)
                     {
                         m = new Magazziniere(j, i, sizePacchi, magazziniere);
                         pnlCampoGioco.Controls.Add(m.pboxm);
+                    }
+                    else if (campoGioco[j, i] == 2)
+                        lstPacchi.Add(new Pacco(j, i, sizePacchi, pacco));
+                }
+            }
+
+            for (int i = 0; i < campoGioco.GetLength(1); i++)
+            {
+                for (int j = 0; j < campoGioco.GetLength(0); j++)
+                {
+                    if (campoGioco[j, i] == -1)
+                    {
+                        PictureBox pboxm = new PictureBox();
+                        pboxm.Image = new Bitmap(trigger);
+                        pboxm.SizeMode = PictureBoxSizeMode.StretchImage;
+                        pboxm.Visible = true;
+                        pboxm.Location = new Point(i * sizePacchi, j * sizePacchi);
+                        pboxm.Size = new Size(sizePacchi, sizePacchi);
+                        pnlCampoGioco.Controls.Add(pboxm);
+                       
                     }
                     else if (campoGioco[j, i] == 1)
                     {
@@ -99,20 +117,10 @@ namespace Soko_ban
                         pbox.Location = new Point(i * sizePacchi, j * sizePacchi);
                         pbox.Size = new Size(sizePacchi, sizePacchi);
                         pnlCampoGioco.Controls.Add(pbox);
-                    }
-                    else if (campoGioco[j, i] == -1)
-                    {
-                        PictureBox pbox = new PictureBox();
-                        pbox.Image = new Bitmap(trigger);
-                        pbox.SizeMode = PictureBoxSizeMode.StretchImage;
-                        pbox.Visible = true;
-                        pbox.Location = new Point(i * sizePacchi, j * sizePacchi);
-                        pbox.Size = new Size(sizePacchi, sizePacchi);
-                        pnlCampoGioco.Controls.Add(pbox);
-                    }
+                    }                    
                 }
             }
-
+            
             foreach (Pacco p in lstPacchi) //aggiunta al pannello dei pacchi generati
             {
                 p.pboxp.Location = new Point(p.Posy * sizePacchi, p.Posx * sizePacchi);
