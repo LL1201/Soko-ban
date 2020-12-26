@@ -182,6 +182,7 @@ namespace Soko_ban
             }
             lblMosse.Text = Convert.ToString(m.Mosse);
             lblPushes.Text = Convert.ToString(m.Spinte);
+            TriggerZone();
         }        
 
         private void TriggerZone()
@@ -222,7 +223,7 @@ namespace Soko_ban
         {
             tempo++;
             lblTempo.Text = Convert.ToString(TimeSpan.FromSeconds(tempo));
-            TriggerZone();            
+            //TriggerZone();            
         }
     }
 }
