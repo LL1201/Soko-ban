@@ -69,18 +69,18 @@
             this.pnlRisultato.Controls.Add(this.groupBox1);
             this.pnlRisultato.Controls.Add(this.btnContinua);
             this.pnlRisultato.Controls.Add(this.label1);
-            this.pnlRisultato.Location = new System.Drawing.Point(121, 13);
-            this.pnlRisultato.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlRisultato.Location = new System.Drawing.Point(91, 11);
             this.pnlRisultato.Name = "pnlRisultato";
-            this.pnlRisultato.Size = new System.Drawing.Size(1168, 686);
+            this.pnlRisultato.Size = new System.Drawing.Size(877, 558);
             this.pnlRisultato.TabIndex = 1;
             this.pnlRisultato.Visible = false;
             // 
             // btnReload
             // 
-            this.btnReload.Location = new System.Drawing.Point(1152, 580);
+            this.btnReload.Location = new System.Drawing.Point(864, 471);
+            this.btnReload.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(107, 42);
+            this.btnReload.Size = new System.Drawing.Size(80, 34);
             this.btnReload.TabIndex = 3;
             this.btnReload.Text = "Riprova";
             this.btnReload.UseVisualStyleBackColor = true;
@@ -93,11 +93,9 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(217, 128);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(163, 104);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(519, 257);
+            this.groupBox1.Size = new System.Drawing.Size(389, 209);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Statistiche";
@@ -106,10 +104,9 @@
             // 
             this.lblTempoRisultato.AutoSize = true;
             this.lblTempoRisultato.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTempoRisultato.Location = new System.Drawing.Point(369, 177);
-            this.lblTempoRisultato.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTempoRisultato.Location = new System.Drawing.Point(277, 144);
             this.lblTempoRisultato.Name = "lblTempoRisultato";
-            this.lblTempoRisultato.Size = new System.Drawing.Size(95, 36);
+            this.lblTempoRisultato.Size = new System.Drawing.Size(79, 29);
             this.lblTempoRisultato.TabIndex = 12;
             this.lblTempoRisultato.Text = "label9";
             // 
@@ -117,10 +114,9 @@
             // 
             this.lblSpinteRisultato.AutoSize = true;
             this.lblSpinteRisultato.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSpinteRisultato.Location = new System.Drawing.Point(369, 108);
-            this.lblSpinteRisultato.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSpinteRisultato.Location = new System.Drawing.Point(277, 88);
             this.lblSpinteRisultato.Name = "lblSpinteRisultato";
-            this.lblSpinteRisultato.Size = new System.Drawing.Size(95, 36);
+            this.lblSpinteRisultato.Size = new System.Drawing.Size(79, 29);
             this.lblSpinteRisultato.TabIndex = 11;
             this.lblSpinteRisultato.Text = "label8";
             // 
@@ -128,10 +124,9 @@
             // 
             this.lblMosseRisultato.AutoSize = true;
             this.lblMosseRisultato.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMosseRisultato.Location = new System.Drawing.Point(369, 41);
-            this.lblMosseRisultato.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMosseRisultato.Location = new System.Drawing.Point(277, 33);
             this.lblMosseRisultato.Name = "lblMosseRisultato";
-            this.lblMosseRisultato.Size = new System.Drawing.Size(95, 36);
+            this.lblMosseRisultato.Size = new System.Drawing.Size(79, 29);
             this.lblMosseRisultato.TabIndex = 10;
             this.lblMosseRisultato.Text = "label7";
             // 
@@ -139,10 +134,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(44, 177);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(33, 144);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(250, 36);
+            this.label6.Size = new System.Drawing.Size(210, 29);
             this.label6.TabIndex = 9;
             this.label6.Text = "Tempo impiegato:";
             // 
@@ -150,10 +144,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(44, 108);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(33, 88);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(116, 36);
+            this.label5.Size = new System.Drawing.Size(94, 29);
             this.label5.TabIndex = 8;
             this.label5.Text = "Spinte: ";
             // 
@@ -161,20 +154,18 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(44, 41);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(33, 33);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 36);
+            this.label3.Size = new System.Drawing.Size(97, 29);
             this.label3.TabIndex = 7;
             this.label3.Text = "Mosse: ";
             // 
             // btnContinua
             // 
             this.btnContinua.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnContinua.Location = new System.Drawing.Point(300, 393);
-            this.btnContinua.Margin = new System.Windows.Forms.Padding(4);
+            this.btnContinua.Location = new System.Drawing.Point(225, 319);
             this.btnContinua.Name = "btnContinua";
-            this.btnContinua.Size = new System.Drawing.Size(373, 85);
+            this.btnContinua.Size = new System.Drawing.Size(280, 69);
             this.btnContinua.TabIndex = 7;
             this.btnContinua.Text = "CONTINUA";
             this.btnContinua.UseVisualStyleBackColor = true;
@@ -186,10 +177,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(256, 26);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(192, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(481, 91);
+            this.label1.Size = new System.Drawing.Size(388, 73);
             this.label1.TabIndex = 0;
             this.label1.Text = "HAI VINTO!!";
             // 
@@ -205,9 +195,10 @@
             this.toolStripStatusLabel4,
             this.lblTempo,
             this.statusBar});
-            this.barrasotto.Location = new System.Drawing.Point(0, 577);
+            this.barrasotto.Location = new System.Drawing.Point(0, 468);
             this.barrasotto.Name = "barrasotto";
-            this.barrasotto.Size = new System.Drawing.Size(1596, 47);
+            this.barrasotto.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
+            this.barrasotto.Size = new System.Drawing.Size(1197, 39);
             this.barrasotto.TabIndex = 2;
             this.barrasotto.Text = "statusStrip1";
             // 
@@ -215,71 +206,70 @@
             // 
             this.lblLivello.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLivello.Name = "lblLivello";
-            this.lblLivello.Size = new System.Drawing.Size(297, 41);
+            this.lblLivello.Size = new System.Drawing.Size(238, 34);
             this.lblLivello.Text = "toolStripStatusLabel1";
             // 
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(112, 41);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(89, 34);
             this.toolStripStatusLabel2.Text = "Mosse:";
             // 
             // lblMosse
             // 
             this.lblMosse.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMosse.Name = "lblMosse";
-            this.lblMosse.Size = new System.Drawing.Size(297, 41);
+            this.lblMosse.Size = new System.Drawing.Size(238, 34);
             this.lblMosse.Text = "toolStripStatusLabel1";
             // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(109, 41);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(88, 34);
             this.toolStripStatusLabel3.Text = "Spinte:";
             // 
             // lblPushes
             // 
             this.lblPushes.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPushes.Name = "lblPushes";
-            this.lblPushes.Size = new System.Drawing.Size(297, 41);
+            this.lblPushes.Size = new System.Drawing.Size(238, 34);
             this.lblPushes.Text = "toolStripStatusLabel2";
             // 
             // toolStripStatusLabel4
             // 
             this.toolStripStatusLabel4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(116, 41);
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(93, 34);
             this.toolStripStatusLabel4.Text = "Tempo:";
             // 
             // lblTempo
             // 
             this.lblTempo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTempo.Name = "lblTempo";
-            this.lblTempo.Size = new System.Drawing.Size(128, 41);
+            this.lblTempo.Size = new System.Drawing.Size(103, 34);
             this.lblTempo.Text = "00:00:00";
             // 
             // statusBar
             // 
             this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(100, 39);
+            this.statusBar.Size = new System.Drawing.Size(75, 33);
             // 
             // frmLivello
             // 
             this.AcceptButton = this.btnContinua;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1596, 624);
+            this.ClientSize = new System.Drawing.Size(1197, 507);
             this.Controls.Add(this.barrasotto);
             this.Controls.Add(this.pnlRisultato);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmLivello";
             this.Text = "Livello";
-            this.Load += new System.EventHandler(this.Livello_Load);
+            this.Load += new System.EventHandler(this.Livello_Load);            
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.pnlRisultato.ResumeLayout(false);
             this.pnlRisultato.PerformLayout();

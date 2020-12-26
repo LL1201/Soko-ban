@@ -14,7 +14,7 @@ namespace Soko_ban
         private List<Pacco> lstPacchi = new List<Pacco>();
         private Magazziniere m;
         public int livello;
-        private Image muro, pacco, magazziniere, trigger;        
+        private Image muro, pacco, magazziniere, trigger, cassatriggered;
         private int tempo;
         LevelsRoot livelli;
         Panel pnlCampoGioco;
@@ -38,7 +38,8 @@ namespace Soko_ban
             muro = Image.FromFile("..\\..\\images\\mattoni.jpg");
             pacco = Image.FromFile("..\\..\\images\\cassa.jpg");
             magazziniere = Image.FromFile("..\\..\\images\\magazziniere.jpg");
-            trigger = Image.FromFile("..\\..\\images\\trigger.png");            
+            trigger = Image.FromFile("..\\..\\images\\trigger.png");
+            cassatriggered = Image.FromFile("..\\..\\images\\cassatriggered.jpg");
 
             reader.Close();
             CaricaLivello(livello);
@@ -48,13 +49,17 @@ namespace Soko_ban
         {
             int cont = 0;
             this.livello = livello;
-            campoGioco = new int[livelli.Levels[livello].Matrixr, livelli.Levels[livello].Matrixc];
+
+            Point triggerI = new Point(livelli.Levels[livello].TriggerXi, livelli.Levels[livello].TriggerYi);
+            Point triggerF = new Point(livelli.Levels[livello].TriggerXf, livelli.Levels[livello].TriggerYf);
+
+            campoGioco = new int[livelli.Levels[livello].Matrixr, livelli.Levels[livello].Matrixc];            
 
             //generazione nuovo pannello
             pnlCampoGioco = new Panel();
             Controls.Add(pnlCampoGioco);
             pnlCampoGioco.Visible = true;
-            statusBar.Value = 0;
+            statusBar.Value = 0;            
 
             //pulizia label punti e tempo
             lstPacchi.Clear();
@@ -89,8 +94,14 @@ namespace Soko_ban
                         pnlCampoGioco.Controls.Add(m.pboxm);
                     }
                     else if (campoGioco[j, i] == 2)
-                        lstPacchi.Add(new Pacco(j, i, sizePacchi, pacco));
+                        lstPacchi.Add(new Pacco(j, i, sizePacchi, pacco, cassatriggered, triggerI, triggerF));
                 }
+            }
+
+            foreach (Pacco p in lstPacchi) //aggiunta al pannello dei pacchi generati
+            {
+                p.pboxp.Location = new Point(p.Posy * sizePacchi, p.Posx * sizePacchi);
+                pnlCampoGioco.Controls.Add(p.pboxp);
             }
 
             for (int i = 0; i < campoGioco.GetLength(1); i++)
@@ -105,8 +116,7 @@ namespace Soko_ban
                         pboxm.Visible = true;
                         pboxm.Location = new Point(i * sizePacchi, j * sizePacchi);
                         pboxm.Size = new Size(sizePacchi, sizePacchi);
-                        pnlCampoGioco.Controls.Add(pboxm);
-                       
+                        pnlCampoGioco.Controls.Add(pboxm);                        
                     }
                     else if (campoGioco[j, i] == 1)
                     {
@@ -119,13 +129,8 @@ namespace Soko_ban
                         pnlCampoGioco.Controls.Add(pbox);
                     }                    
                 }
-            }
+            }           
             
-            foreach (Pacco p in lstPacchi) //aggiunta al pannello dei pacchi generati
-            {
-                p.pboxp.Location = new Point(p.Posy * sizePacchi, p.Posx * sizePacchi);
-                pnlCampoGioco.Controls.Add(p.pboxp);
-            }
         }
 
         #region Gestione tasti e gestione della triggerzone
@@ -177,20 +182,17 @@ namespace Soko_ban
             }
             lblMosse.Text = Convert.ToString(m.Mosse);
             lblPushes.Text = Convert.ToString(m.Spinte);
-        }
+        }        
 
         private void TriggerZone()
         {
             int nPacchiOK = 0;
-            int inc = 0;
+            int inc;                                
 
-            for (int i = livelli.Levels[livello].TriggerXi; i < livelli.Levels[livello].TriggerXf; i++)
+            foreach (Pacco pacco in lstPacchi)
             {
-                for (int j = livelli.Levels[livello].TriggerYi; j < livelli.Levels[livello].TriggerYf; j++)
-                {
-                    if (campoGioco[j, i] == 2)
-                        nPacchiOK++;
-                }
+                if (pacco.paccoOk())
+                    nPacchiOK++;
             }
 
             if (nPacchiOK == lstPacchi.Count)
@@ -202,18 +204,17 @@ namespace Soko_ban
                 lblTempoRisultato.Text = Convert.ToString(TimeSpan.FromSeconds(tempo));
             }
 
-            inc = (nPacchiOK*100) / livelli.Levels[livello].nPacchi;
+            inc = (nPacchiOK * 100) / livelli.Levels[livello].nPacchi;
             statusBar.Value = inc;
         }
+        
         #endregion  
 
         private void btnContinua_Click(object sender, EventArgs e)
         {
             pnlRisultato.Visible = false;
             pnlCampoGioco.Visible = false;
-            pnlCampoGioco.Controls.Clear();
-            //Controls.Clear();
-            //pnlCampoGioco = null;            
+            pnlCampoGioco.Controls.Clear();                        
             CaricaLivello(livello + 1);
         }
 
@@ -221,7 +222,7 @@ namespace Soko_ban
         {
             tempo++;
             lblTempo.Text = Convert.ToString(TimeSpan.FromSeconds(tempo));
-            TriggerZone();                      
+            TriggerZone();            
         }
     }
 }
