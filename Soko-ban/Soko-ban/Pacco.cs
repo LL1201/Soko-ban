@@ -12,8 +12,8 @@ namespace Soko_ban
         private Point position;
         public PictureBox pboxp;
         private int sizePacchi;
-        Image pacco, triggered;
-        Point triggerI, triggerF;
+        private Image pacco, triggered;
+        private Point triggerI, triggerF;       
 
         public Pacco(int x, int y, int sizePacchi, Image pacco, Image triggered, Point triggerpti, Point triggerptf)
         {
@@ -21,6 +21,8 @@ namespace Soko_ban
             position.Y = y;
             this.pacco = pacco;
             this.triggered = triggered;
+            this.pacco.Tag = "pacco";
+            this.triggered.Tag = "triggered";
             triggerF = triggerptf;
             triggerI = triggerpti;
 
@@ -58,7 +60,7 @@ namespace Soko_ban
         {
             if (paccoOk())
                 pboxp.Image = new Bitmap(triggered);
-            else if(!paccoOk() && pboxp.Image == triggered)
+            else if (!paccoOk())
                 pboxp.Image = new Bitmap(pacco);
         }
         public bool paccoOk()
