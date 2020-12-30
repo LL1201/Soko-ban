@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLivello));
             this.tmrTempo = new System.Windows.Forms.Timer(this.components);
             this.pnlRisultato = new System.Windows.Forms.Panel();
-            this.btnReload = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblTempoRisultato = new System.Windows.Forms.Label();
             this.lblSpinteRisultato = new System.Windows.Forms.Label();
@@ -50,8 +49,8 @@
             this.lblPushes = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblTempo = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusBar = new System.Windows.Forms.ToolStripProgressBar();
             this.pnlRisultato.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.barrasotto.SuspendLayout();
@@ -64,38 +63,29 @@
             // 
             // pnlRisultato
             // 
-            this.pnlRisultato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pnlRisultato.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pnlRisultato.AutoSize = true;
             this.pnlRisultato.BackColor = System.Drawing.Color.White;
             this.pnlRisultato.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlRisultato.Controls.Add(this.btnReload);
             this.pnlRisultato.Controls.Add(this.groupBox1);
             this.pnlRisultato.Controls.Add(this.btnContinua);
             this.pnlRisultato.Controls.Add(this.label1);
-            this.pnlRisultato.Location = new System.Drawing.Point(179, 11);
+            this.pnlRisultato.Location = new System.Drawing.Point(0, 0);
             this.pnlRisultato.Name = "pnlRisultato";
-            this.pnlRisultato.Size = new System.Drawing.Size(671, 432);
+            this.pnlRisultato.Size = new System.Drawing.Size(1350, 507);
             this.pnlRisultato.TabIndex = 1;
             this.pnlRisultato.Visible = false;
             // 
-            // btnReload
-            // 
-            this.btnReload.Location = new System.Drawing.Point(864, 471);
-            this.btnReload.Margin = new System.Windows.Forms.Padding(2);
-            this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(80, 34);
-            this.btnReload.TabIndex = 3;
-            this.btnReload.Text = "Riprova";
-            this.btnReload.UseVisualStyleBackColor = true;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.lblTempoRisultato);
             this.groupBox1.Controls.Add(this.lblSpinteRisultato);
             this.groupBox1.Controls.Add(this.lblMosseRisultato);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(163, 104);
+            this.groupBox1.Location = new System.Drawing.Point(517, 104);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(389, 209);
             this.groupBox1.TabIndex = 8;
@@ -165,9 +155,9 @@
             // btnContinua
             // 
             this.btnContinua.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnContinua.Location = new System.Drawing.Point(225, 319);
+            this.btnContinua.Location = new System.Drawing.Point(517, 319);
             this.btnContinua.Name = "btnContinua";
-            this.btnContinua.Size = new System.Drawing.Size(280, 69);
+            this.btnContinua.Size = new System.Drawing.Size(389, 69);
             this.btnContinua.TabIndex = 7;
             this.btnContinua.Text = "CONTINUA";
             this.btnContinua.UseVisualStyleBackColor = true;
@@ -175,16 +165,17 @@
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(164, 19);
+            this.label1.Location = new System.Drawing.Point(423, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(388, 73);
+            this.label1.Size = new System.Drawing.Size(592, 64);
             this.label1.TabIndex = 0;
-            this.label1.Text = "HAI VINTO!!";
+            this.label1.Text = "LIVELLO SUPERATO!";
             // 
             // barrasotto
             // 
@@ -255,17 +246,17 @@
             this.lblTempo.Size = new System.Drawing.Size(103, 34);
             this.lblTempo.Text = "00:00:00";
             // 
-            // statusBar
-            // 
-            this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(75, 33);
-            // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(88, 34);
             this.toolStripStatusLabel1.Text = "Livello:";
+            // 
+            // statusBar
+            // 
+            this.statusBar.Name = "statusBar";
+            this.statusBar.Size = new System.Drawing.Size(75, 33);
             // 
             // frmLivello
             // 
@@ -315,7 +306,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripProgressBar statusBar;
-        private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }

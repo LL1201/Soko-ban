@@ -48,10 +48,10 @@ namespace Soko_ban
         private void CaricaLivello(int livello)
         {
             int cont = 0;
-            this.livello = livello;
+            this.livello = livello;            
 
             Point triggerI = new Point(livelli.Levels[livello].TriggerXi, livelli.Levels[livello].TriggerYi);
-            Point triggerF = new Point(livelli.Levels[livello].TriggerXf, livelli.Levels[livello].TriggerYf);
+            Point triggerF = new Point(livelli.Levels[livello].TriggerXf, livelli.Levels[livello].TriggerYf);            
 
             campoGioco = new int[livelli.Levels[livello].Matrixr, livelli.Levels[livello].Matrixc];            
 
@@ -220,8 +220,14 @@ namespace Soko_ban
         {
             pnlRisultato.Visible = false;
             pnlCampoGioco.Visible = false;
-            pnlCampoGioco.Controls.Clear();                        
-            CaricaLivello(livello + 1);
+            pnlCampoGioco.Controls.Clear();
+            if (livelli.Levels.Count <= livello + 1)
+            {
+                MessageBox.Show("HAI COMPLETATO IL GIOCO!!");
+                Close();
+            }
+            else
+                CaricaLivello(livello + 1);
         }
 
         private void tmrTempo_Tick(object sender, EventArgs e)
