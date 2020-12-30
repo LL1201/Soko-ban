@@ -53,10 +53,10 @@ namespace Soko_ban
             Point triggerI = new Point(livelli.Levels[livello].TriggerXi, livelli.Levels[livello].TriggerYi);
             Point triggerF = new Point(livelli.Levels[livello].TriggerXf, livelli.Levels[livello].TriggerYf);            
 
-            campoGioco = new int[livelli.Levels[livello].Matrixr, livelli.Levels[livello].Matrixc];            
+            campoGioco = new int[livelli.Levels[livello].Matrixr, livelli.Levels[livello].Matrixc];
 
-            //generazione nuovo pannello
-            pnlCampoGioco = new Panel();
+            //generazione nuovo pannello            
+            pnlCampoGioco = new Panel();            
             Controls.Add(pnlCampoGioco);
             pnlCampoGioco.Visible = true;
             statusBar.Value = 0;            
@@ -159,7 +159,29 @@ namespace Soko_ban
                     KeyFunc(m.Posx, m.Posy, 1, 0);                    
                     break;
             }
-        }        
+        }
+
+        private void chiudiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void manualeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Implementazione menu manuale non ancora terminata");
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Sokoban for Windows 10 versione 1.0", "Sokoban for Windows");
+        }
+
+        private void ricaricaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pnlCampoGioco.Visible = false;
+            pnlCampoGioco.Controls.Clear();
+            CaricaLivello(livello);
+        }
 
         private void KeyFunc(int mx, int my, int x, int y)
         {
@@ -227,7 +249,7 @@ namespace Soko_ban
                 Close();
             }
             else
-                CaricaLivello(livello + 1);
+                CaricaLivello(livello);
         }
 
         private void tmrTempo_Tick(object sender, EventArgs e)
