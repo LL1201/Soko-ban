@@ -159,29 +159,7 @@ namespace Soko_ban
                     KeyFunc(m.Posx, m.Posy, 1, 0);                    
                     break;
             }
-        }
-
-        private void chiudiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void manualeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Implementazione menu manuale non ancora terminata");
-        }
-
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Sokoban for Windows 10 versione 1.0", "Sokoban for Windows");
-        }
-
-        private void ricaricaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            pnlCampoGioco.Visible = false;
-            pnlCampoGioco.Controls.Clear();
-            CaricaLivello(livello);
-        }
+        }        
 
         private void KeyFunc(int mx, int my, int x, int y)
         {
@@ -235,8 +213,31 @@ namespace Soko_ban
             inc = (nPacchiOK * 100) / livelli.Levels[livello].nPacchi;
             statusBar.Value = inc;            
         }
-        
-        #endregion  
+
+        #endregion
+        #region Bottoni barra strumenti
+        private void chiudiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void manualeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Implementazione menu manuale non ancora terminata");
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Sokoban for Windows 10 versione 1.0", "Sokoban for Windows");
+        }
+
+        private void ricaricaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pnlCampoGioco.Visible = false;
+            pnlCampoGioco.Controls.Clear();
+            CaricaLivello(livello);
+        }
+        #endregion
 
         private void btnContinua_Click(object sender, EventArgs e)
         {
