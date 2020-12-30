@@ -252,7 +252,7 @@ namespace Soko_ban
                 Close();
             }
             else
-                CaricaLivello(livello);
+                CaricaLivello(livello + 1);
         }
 
         private void tmrTempo_Tick(object sender, EventArgs e)
