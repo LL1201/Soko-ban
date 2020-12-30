@@ -14,7 +14,7 @@ namespace Soko_ban
         private List<Pacco> lstPacchi = new List<Pacco>();
         private Magazziniere m;
         public int livello;
-        private Image muro, pacco, magazziniere, trigger, cassatriggered;
+        private Image muro, pacco, magazzinieredwn, magazziniereup, magazzinieredx, magazzinieresx, trigger, cassatriggered;
         private int tempo;
         LevelsRoot livelli;
         Panel pnlCampoGioco;
@@ -37,7 +37,10 @@ namespace Soko_ban
 
             muro = Image.FromFile("..\\..\\images\\mattoni.jpg");
             pacco = Image.FromFile("..\\..\\images\\cassa.jpg");
-            magazziniere = Image.FromFile("..\\..\\images\\magazziniere.jpg");
+            magazzinieredwn = Image.FromFile("..\\..\\images\\down.jpg");
+            magazziniereup = Image.FromFile("..\\..\\images\\up.jpg");
+            magazzinieredx = Image.FromFile("..\\..\\images\\dx.jpg");
+            magazzinieresx = Image.FromFile("..\\..\\images\\sx.jpg");
             trigger = Image.FromFile("..\\..\\images\\trigger.jpg");
             cassatriggered = Image.FromFile("..\\..\\images\\cassatriggered.jpg");
 
@@ -92,7 +95,7 @@ namespace Soko_ban
                 {
                     if (campoGioco[j, i] == 3)
                     {
-                        m = new Magazziniere(j, i, sizePacchi, magazziniere);
+                        m = new Magazziniere(j, i, sizePacchi, magazzinieresx);
                         pnlCampoGioco.Controls.Add(m.pboxm);
                     }
                     else if (campoGioco[j, i] == 2)
@@ -148,16 +151,20 @@ namespace Soko_ban
             switch (e.KeyCode)
             {
                 case Keys.Left:                    
-                    KeyFunc(m.Posx, m.Posy, 0, -1);                    
+                    KeyFunc(m.Posx, m.Posy, 0, -1);
+                    m.pboxm.Image = magazzinieresx;
                     break;
                 case Keys.Right:                    
-                    KeyFunc(m.Posx, m.Posy, 0, 1);                    
+                    KeyFunc(m.Posx, m.Posy, 0, 1);
+                    m.pboxm.Image = magazzinieredx;
                     break;
                 case Keys.Up:                    
-                    KeyFunc(m.Posx, m.Posy, -1, 0);                    
+                    KeyFunc(m.Posx, m.Posy, -1, 0);
+                    m.pboxm.Image = magazziniereup;
                     break;
                 case Keys.Down:                    
-                    KeyFunc(m.Posx, m.Posy, 1, 0);                    
+                    KeyFunc(m.Posx, m.Posy, 1, 0);
+                    m.pboxm.Image = magazzinieredwn;
                     break;
             }
         }        

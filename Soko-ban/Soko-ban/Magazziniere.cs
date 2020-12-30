@@ -13,13 +13,13 @@ namespace Soko_ban
         private Point position;
         public readonly PictureBox pboxm;
         private int mosse, spinte;
-        private int sizePacchi;
+        private int sizePacchi;        
         
         public Magazziniere(int x, int y, int sizePacchi, Image image)
         {
             position.X = x;
             position.Y = y;
-            mosse = spinte = 0;
+            mosse = spinte = 0;            
 
             //picture box associata al pacco
             pboxm = new PictureBox()
@@ -37,7 +37,7 @@ namespace Soko_ban
             get => position.X;
             set
             {
-                position.X = value;
+                position.X = value;                
                 pboxm.Location = new Point(position.Y * sizePacchi, position.X * sizePacchi);
             }
         }
