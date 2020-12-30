@@ -11,7 +11,7 @@ namespace Soko_ban
     class Magazziniere
     {
         private Point position;
-        public PictureBox pboxm;
+        public readonly PictureBox pboxm;
         private int mosse, spinte;
         private int sizePacchi;
         
@@ -22,12 +22,14 @@ namespace Soko_ban
             mosse = spinte = 0;
 
             //picture box associata al pacco
-            pboxm = new PictureBox();
-            pboxm.Image = new Bitmap(image);
-            pboxm.SizeMode = PictureBoxSizeMode.StretchImage;
-            pboxm.Visible = true;
-            pboxm.Location = new Point(position.Y * sizePacchi, position.X * sizePacchi);
-            pboxm.Size = new Size(sizePacchi, sizePacchi);
+            pboxm = new PictureBox()
+            {
+                Image = image,
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Visible = true,
+                Location = new Point(position.Y * sizePacchi, position.X * sizePacchi),
+                Size = new Size(sizePacchi, sizePacchi)
+            };            
             this.sizePacchi = sizePacchi;
         }
         public int Posx

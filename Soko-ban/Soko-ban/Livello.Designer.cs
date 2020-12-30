@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLivello));
             this.tmrTempo = new System.Windows.Forms.Timer(this.components);
             this.pnlRisultato = new System.Windows.Forms.Panel();
             this.btnReload = new System.Windows.Forms.Button();
@@ -50,6 +51,7 @@
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblTempo = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.pnlRisultato.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.barrasotto.SuspendLayout();
@@ -63,22 +65,22 @@
             // pnlRisultato
             // 
             this.pnlRisultato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.pnlRisultato.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.pnlRisultato.BackColor = System.Drawing.Color.White;
             this.pnlRisultato.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlRisultato.Controls.Add(this.btnReload);
             this.pnlRisultato.Controls.Add(this.groupBox1);
             this.pnlRisultato.Controls.Add(this.btnContinua);
             this.pnlRisultato.Controls.Add(this.label1);
-            this.pnlRisultato.Location = new System.Drawing.Point(91, 11);
+            this.pnlRisultato.Location = new System.Drawing.Point(179, 11);
             this.pnlRisultato.Name = "pnlRisultato";
-            this.pnlRisultato.Size = new System.Drawing.Size(877, 558);
+            this.pnlRisultato.Size = new System.Drawing.Size(671, 432);
             this.pnlRisultato.TabIndex = 1;
             this.pnlRisultato.Visible = false;
             // 
             // btnReload
             // 
             this.btnReload.Location = new System.Drawing.Point(864, 471);
-            this.btnReload.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnReload.Margin = new System.Windows.Forms.Padding(2);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(80, 34);
             this.btnReload.TabIndex = 3;
@@ -175,9 +177,10 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(192, 21);
+            this.label1.Location = new System.Drawing.Point(164, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(388, 73);
             this.label1.TabIndex = 0;
@@ -194,11 +197,12 @@
             this.lblPushes,
             this.toolStripStatusLabel4,
             this.lblTempo,
+            this.toolStripStatusLabel1,
             this.statusBar});
             this.barrasotto.Location = new System.Drawing.Point(0, 468);
             this.barrasotto.Name = "barrasotto";
             this.barrasotto.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
-            this.barrasotto.Size = new System.Drawing.Size(1197, 39);
+            this.barrasotto.Size = new System.Drawing.Size(1350, 39);
             this.barrasotto.TabIndex = 2;
             this.barrasotto.Text = "statusStrip1";
             // 
@@ -256,6 +260,13 @@
             this.statusBar.Name = "statusBar";
             this.statusBar.Size = new System.Drawing.Size(75, 33);
             // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(88, 34);
+            this.toolStripStatusLabel1.Text = "Livello:";
+            // 
             // frmLivello
             // 
             this.AcceptButton = this.btnContinua;
@@ -263,13 +274,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1197, 507);
+            this.ClientSize = new System.Drawing.Size(1350, 507);
             this.Controls.Add(this.barrasotto);
             this.Controls.Add(this.pnlRisultato);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "frmLivello";
             this.Text = "Livello";
-            this.Load += new System.EventHandler(this.Livello_Load);            
+            this.Load += new System.EventHandler(this.Livello_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.pnlRisultato.ResumeLayout(false);
             this.pnlRisultato.PerformLayout();
@@ -304,6 +316,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripProgressBar statusBar;
         private System.Windows.Forms.Button btnReload;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 

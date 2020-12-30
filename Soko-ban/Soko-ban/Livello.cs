@@ -38,7 +38,7 @@ namespace Soko_ban
             muro = Image.FromFile("..\\..\\images\\mattoni.jpg");
             pacco = Image.FromFile("..\\..\\images\\cassa.jpg");
             magazziniere = Image.FromFile("..\\..\\images\\magazziniere.jpg");
-            trigger = Image.FromFile("..\\..\\images\\trigger.png");
+            trigger = Image.FromFile("..\\..\\images\\trigger.jpg");
             cassatriggered = Image.FromFile("..\\..\\images\\cassatriggered.jpg");
 
             reader.Close();
@@ -67,7 +67,7 @@ namespace Soko_ban
             lblPushes.Text = "0";
             tempo = 0;
             barrasotto.Text = "00:00:00";
-            lblLivello.Text = livelli.Levels[livello].Name;            
+            Text = lblLivello.Text = livelli.Levels[livello].Name;             
 
             //cicli necessari per inserire i valori successivi della lista in una matrice ordinata
             do
@@ -83,7 +83,8 @@ namespace Soko_ban
             } while (cont < livelli.Levels[livello].Matrixr * livelli.Levels[livello].Matrixc);
             pnlCampoGioco.Size = new Size(campoGioco.GetLength(1) * sizePacchi, (campoGioco.GetLength(0) * sizePacchi) + 48);
 
-            //scansione matrice per verificare la presenza di muri e pacchi e quindi per la loro istanziazione e disegno
+            #region Aggiunta alla form di tutte le componenti necessarie
+            //posizionato prima questo for in modo che il magazziniere e i pacchi si sovrappongano a tutto il resto (triggerzone)
             for (int i = 0; i < campoGioco.GetLength(1); i++)
             {
                 for (int j = 0; j < campoGioco.GetLength(0); j++)
@@ -104,33 +105,38 @@ namespace Soko_ban
                 pnlCampoGioco.Controls.Add(p.pboxp);
             }
 
+            //aggiunta di tutte le altre picturebox riguardanti il magazino
             for (int i = 0; i < campoGioco.GetLength(1); i++)
             {
                 for (int j = 0; j < campoGioco.GetLength(0); j++)
                 {
                     if (campoGioco[j, i] == -1)
                     {
-                        PictureBox pboxm = new PictureBox();
-                        pboxm.Image = new Bitmap(trigger);
-                        pboxm.SizeMode = PictureBoxSizeMode.StretchImage;
-                        pboxm.Visible = true;
-                        pboxm.Location = new Point(i * sizePacchi, j * sizePacchi);
-                        pboxm.Size = new Size(sizePacchi, sizePacchi);
+                        PictureBox pboxm = new PictureBox()
+                        {
+                            Image = trigger,
+                            SizeMode = PictureBoxSizeMode.StretchImage,
+                            Visible = true,
+                            Location = new Point(i * sizePacchi, j * sizePacchi),
+                            Size = new Size(sizePacchi, sizePacchi)
+                        };                        
                         pnlCampoGioco.Controls.Add(pboxm);                        
                     }
                     else if (campoGioco[j, i] == 1)
                     {
-                        PictureBox pbox = new PictureBox();
-                        pbox.Image = new Bitmap(muro);
-                        pbox.SizeMode = PictureBoxSizeMode.StretchImage;
-                        pbox.Visible = true;
-                        pbox.Location = new Point(i * sizePacchi, j * sizePacchi);
-                        pbox.Size = new Size(sizePacchi, sizePacchi);
+                        PictureBox pbox = new PictureBox()
+                        {
+                            Image = muro,
+                            SizeMode = PictureBoxSizeMode.StretchImage,
+                            Visible = true,
+                            Location = new Point(i * sizePacchi, j * sizePacchi),
+                            Size = new Size(sizePacchi, sizePacchi)
+                        }; 
                         pnlCampoGioco.Controls.Add(pbox);
                     }                    
                 }
-            }           
-            
+            }
+            #endregion
         }
 
         #region Gestione tasti e gestione della triggerzone
@@ -153,7 +159,7 @@ namespace Soko_ban
                     KeyFunc(m.Posx, m.Posy, 1, 0);                    
                     break;
             }
-        }
+        }        
 
         private void KeyFunc(int mx, int my, int x, int y)
         {
@@ -191,7 +197,7 @@ namespace Soko_ban
 
             foreach (Pacco pacco in lstPacchi)
             {
-                if (pacco.paccoOk())
+                if (pacco.PaccoOk())
                     nPacchiOK++;
             }
 
@@ -205,7 +211,7 @@ namespace Soko_ban
             }
 
             inc = (nPacchiOK * 100) / livelli.Levels[livello].nPacchi;
-            statusBar.Value = inc;
+            statusBar.Value = inc;            
         }
         
         #endregion  
