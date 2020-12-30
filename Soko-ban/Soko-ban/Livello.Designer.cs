@@ -60,7 +60,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlRisultato = new System.Windows.Forms.Panel();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.barrasotto.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -85,73 +84,73 @@
             this.lblTempo,
             this.toolStripStatusLabel1,
             this.statusBar});
-            this.barrasotto.Location = new System.Drawing.Point(0, 468);
+            this.barrasotto.Location = new System.Drawing.Point(0, 472);
             this.barrasotto.Name = "barrasotto";
             this.barrasotto.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
-            this.barrasotto.Size = new System.Drawing.Size(1350, 39);
+            this.barrasotto.Size = new System.Drawing.Size(1350, 35);
             this.barrasotto.TabIndex = 2;
             this.barrasotto.Text = "statusStrip1";
             // 
             // lblLivello
             // 
-            this.lblLivello.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLivello.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLivello.Name = "lblLivello";
-            this.lblLivello.Size = new System.Drawing.Size(238, 34);
+            this.lblLivello.Size = new System.Drawing.Size(206, 34);
             this.lblLivello.Text = "toolStripStatusLabel1";
             // 
             // toolStripStatusLabel2
             // 
-            this.toolStripStatusLabel2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabel2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(89, 34);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(78, 34);
             this.toolStripStatusLabel2.Text = "Mosse:";
             // 
             // lblMosse
             // 
-            this.lblMosse.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMosse.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMosse.Name = "lblMosse";
-            this.lblMosse.Size = new System.Drawing.Size(238, 34);
+            this.lblMosse.Size = new System.Drawing.Size(206, 34);
             this.lblMosse.Text = "toolStripStatusLabel1";
             // 
             // toolStripStatusLabel3
             // 
-            this.toolStripStatusLabel3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabel3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(88, 34);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(76, 34);
             this.toolStripStatusLabel3.Text = "Spinte:";
             // 
             // lblPushes
             // 
-            this.lblPushes.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPushes.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPushes.Name = "lblPushes";
-            this.lblPushes.Size = new System.Drawing.Size(238, 34);
+            this.lblPushes.Size = new System.Drawing.Size(206, 34);
             this.lblPushes.Text = "toolStripStatusLabel2";
             // 
             // toolStripStatusLabel4
             // 
-            this.toolStripStatusLabel4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabel4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(93, 34);
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(80, 34);
             this.toolStripStatusLabel4.Text = "Tempo:";
             // 
             // lblTempo
             // 
-            this.lblTempo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTempo.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTempo.Name = "lblTempo";
-            this.lblTempo.Size = new System.Drawing.Size(103, 34);
+            this.lblTempo.Size = new System.Drawing.Size(89, 34);
             this.lblTempo.Text = "00:00:00";
             // 
             // toolStripStatusLabel1
             // 
-            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(88, 34);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(76, 34);
             this.toolStripStatusLabel1.Text = "Livello:";
             // 
             // statusBar
             // 
             this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(75, 33);
+            this.statusBar.Size = new System.Drawing.Size(65, 29);
             // 
             // menuStrip1
             // 
@@ -233,7 +232,7 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(423, 28);
+            this.label1.Location = new System.Drawing.Point(424, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(592, 64);
             this.label1.TabIndex = 0;
@@ -259,9 +258,9 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(517, 91);
+            this.groupBox1.Location = new System.Drawing.Point(518, 91);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(389, 209);
+            this.groupBox1.Size = new System.Drawing.Size(388, 209);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Statistiche";
@@ -336,15 +335,12 @@
             this.pnlRisultato.Controls.Add(this.btnContinua);
             this.pnlRisultato.Controls.Add(this.label1);
             this.pnlRisultato.Location = new System.Drawing.Point(0, 27);
+            this.pnlRisultato.Margin = new System.Windows.Forms.Padding(4);
             this.pnlRisultato.Name = "pnlRisultato";
-            this.pnlRisultato.Size = new System.Drawing.Size(1350, 480);
+            this.pnlRisultato.Padding = new System.Windows.Forms.Padding(1);
+            this.pnlRisultato.Size = new System.Drawing.Size(1351, 480);
             this.pnlRisultato.TabIndex = 1;
             this.pnlRisultato.Visible = false;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // frmLivello
             // 
@@ -403,7 +399,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel pnlRisultato;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem chiudiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem manualeToolStripMenuItem;

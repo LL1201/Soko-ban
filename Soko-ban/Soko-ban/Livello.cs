@@ -58,6 +58,7 @@ namespace Soko_ban
             //generazione nuovo pannello            
             pnlCampoGioco = new Panel();            
             Controls.Add(pnlCampoGioco);
+            pnlCampoGioco.Location = new Point(0, 30);
             pnlCampoGioco.Visible = true;
             statusBar.Value = 0;            
 
@@ -215,6 +216,7 @@ namespace Soko_ban
         }
 
         #endregion
+
         #region Bottoni barra strumenti
         private void chiudiToolStripMenuItem_Click(object sender, EventArgs e)
         {
